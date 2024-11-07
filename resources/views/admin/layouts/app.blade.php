@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" ang="en" data-topbar-color="brand" data-bs-theme="light" data-layout-mode="default" data-layout-width="default" data-menu-color="light" data-menu-icon="default" data-sidenav-size="default" class="menuitem-active">
+<html lang="zxx" ang="en" data-topbar-color="light" data-bs-theme="light" data-layout-mode="default" data-layout-width="default" data-menu-color="light" data-menu-icon="default" data-sidenav-size="default" class="menuitem-active">
 <head>
 		<!-- Required meta tags -->
 		<meta charset="utf-8">

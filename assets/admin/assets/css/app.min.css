@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&amp;display=swap);
 
 :root {
-    --ct-logo-lg-height: 20px;
-    --ct-logo-sm-height: 22px;
+    --ct-logo-lg-height: 70px;
+    --ct-logo-sm-height: 50px;
     --ct-leftbar-width: 240px;
     --ct-leftbar-width-md: 175px;
     --ct-leftbar-width-sm: 80px;
@@ -117,9 +117,9 @@ html[data-two-column-color=gradient] {
 }
 
 html[data-topbar-color=light] {
-    --ct-topbar-bg: #fff;
-    --ct-topbar-item-color: #6c757d;
-    --ct-topbar-item-hover-color: #B99B5C;
+    --ct-topbar-bg: #B99B5C;
+    --ct-topbar-item-color: #000000;
+    --ct-topbar-item-hover-color: #000000;
     --ct-topbar-search-bg: #f8f8f8
 }
 
@@ -6893,4 +6893,25 @@ h4,
 h5,
 h6 {
     font-family: var(--font-family-primary) !important;
+}
+
+.menu-item.menuitem-active
+{
+    background-color: #B99B5C !important;
+}
+
+.menu-item.menuitem-active .menu-link.active
+{
+    color: #fff;
+}
+
+
+.bg-barreau-primary
+{
+    background-color: #B99B5C !important;
+}
+
+.text-barreau-primary
+{
+    color : #B99B5C !important;
 }

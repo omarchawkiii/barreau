@@ -1,0 +1,42 @@
+created:
+    - app/Http/Controllers/LawyerController.php
+    - app/Http/Controllers/NewsController.php
+    - app/Http/Controllers/Cat_newsController.php
+    - app/Http/Controllers/EventController.php
+    - app/Http/Controllers/Cat_eventsController.php
+    - database/factories/LawyerFactory.php
+    - database/factories/NewsFactory.php
+    - database/factories/CatNewsFactory.php
+    - database/factories/EventFactory.php
+    - database/factories/CatEventFactory.php
+    - database/migrations/2024_11_03_030026_create_lawyers_table.php
+    - database/migrations/2024_11_03_030027_create_news_table.php
+    - database/migrations/2024_11_03_030028_create_cat_news_table.php
+    - database/migrations/2024_11_03_030029_create_events_table.php
+    - database/migrations/2024_11_03_030030_create_cat_events_table.php
+    - app/Models/Lawyer.php
+    - app/Models/News.php
+    - app/Models/Cat_news.php
+    - app/Models/Event.php
+    - app/Models/Cat_event.php
+    - tests/Feature/Http/Controllers/LawyerControllerTest.php
+    - tests/Feature/Http/Controllers/NewsControllerTest.php
+    - tests/Feature/Http/Controllers/Cat_newsControllerTest.php
+    - tests/Feature/Http/Controllers/EventControllerTest.php
+    - tests/Feature/Http/Controllers/Cat_eventsControllerTest.php
+updated:
+    - routes/web.php
+skipped:
+    - resources/views/lawyers/index.blade.php
+    - resources/views/lawyers/show.blade.php
+    - resources/views/newses/index.blade.php
+    - resources/views/newses/show.blade.php
+    - resources/views/cat_newses/index.blade.php
+    - resources/views/cat_newses/index.blade.php
+models:
+    lawyer: { code: 'string:255', nom_arb: 'string:255', prenom_arb: 'string:255', date_naiss: date, nom_fr: 'string:255', prenom_fr: 'string:255', etat: 'string:255', date_serment: 'date nullable', lieu_serm: 'string:255 nullable', grade: 'string:255 nullable', tribunal: 'string:255 nullable', adresse_prof_arb: 'string:255 nullable', commune: 'string:255 nullable', willaya: 'string:255 nullable', adresse_fr: 'string:255 nullable', fin_contrat_local: 'date nullable', date_expir_carte: 'date nullable', local: 'string:255 nullable', adresse_domic: 'string:255 nullable', majles: 'string:255 nullable', fonction: 'string:255 nullable', sexe: 'string:255 nullable', depot: 'string:255 nullable', mutation: 'string:255 nullable', date_capa: 'date nullable', ex_proff: 'string:255 nullable', scotab: 'string:255 nullable', sit_prof: 'string:255 nullable', date_reglement: 'date nullable', datcosup: 'date nullable', lieu_nais_arb: 'string:255 nullable', lieu_nais_fr: 'string:255 nullable', willaya_nais_fr: 'string:255 nullable', fin_carte_prof: 'date nullable', tel: 'string:255 nullable', fax: 'string:255 nullable', mob: 'string:255 nullable', email: 'string:255 nullable', num_act_nais: 'string:255 nullable', nom_pere: 'string:255 nullable', nom_mere: 'string:255 nullable', user_id: foreignId }
+    Lawyer: { code: 'string:255', nom_arb: 'string:255', prenom_arb: 'string:255', date_naiss: date, nom_fr: 'string:255', prenom_fr: 'string:255', etat: 'string:255', date_serment: 'date nullable', lieu_serm: 'string:255 nullable', grade: 'string:255 nullable', tribunal: 'string:255 nullable', adresse_prof_arb: 'string:255 nullable', commune: 'string:255 nullable', willaya: 'string:255 nullable', adresse_fr: 'string:255 nullable', fin_contrat_local: 'date nullable', date_expir_carte: 'date nullable', local: 'string:255 nullable', adresse_domic: 'string:255 nullable', majles: 'string:255 nullable', fonction: 'string:255 nullable', sexe: 'string:255 nullable', depot: 'string:255 nullable', mutation: 'string:255 nullable', date_capa: 'date nullable', ex_proff: 'string:255 nullable', scotab: 'string:255 nullable', sit_prof: 'string:255 nullable', date_reglement: 'date nullable', datcosup: 'date nullable', lieu_nais_arb: 'string:255 nullable', lieu_nais_fr: 'string:255 nullable', willaya_nais_fr: 'string:255 nullable', fin_carte_prof: 'date nullable', tel: 'string:255 nullable', fax: 'string:255 nullable', mob: 'string:255 nullable', email: 'string:255 nullable', num_act_nais: 'string:255 nullable', nom_pere: 'string:255 nullable', nom_mere: 'string:255 nullable', user_id: foreignId, relationships: { belongsTo: User } }
+    News: { title: 'string:255', slug: 'string:255 unique', content: text, attachments: 'string:255 nullable', thumbnail: 'string:255 nullable', user_id: foreignId, relationships: { belongsTo: 'User, Cat_news' } }
+    Cat_news: { title: 'string:255', slug: 'string:255 unique', relationships: { hasMany: News } }
+    Event: { title: 'string:255', slug: 'string:255 unique', content: text, attachments: 'string:255 nullable', thumbnail: 'string:255 nullable', user_id: foreignId, relationships: { belongsTo: 'User, Cat_event' } }
+    Cat_event: { title: 'string:255', slug: 'string:255 unique', relationships: { hasMany: Event } }

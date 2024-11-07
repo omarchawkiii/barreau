@@ -1,0 +1,144 @@
+models:
+  Lawyer:
+    code: string:255
+    nom_arb: string:255
+    prenom_arb: string:255
+    date_naiss: date
+    nom_fr: string:255
+    prenom_fr: string:255
+    etat: string:255
+    date_serment: date nullable
+    lieu_serm: string:255 nullable
+    grade: string:255 nullable
+    tribunal: string:255 nullable
+    adresse_prof_arb: string:255 nullable
+    commune: string:255 nullable
+    willaya: string:255 nullable
+    adresse_fr: string:255 nullable
+    fin_contrat_local: date nullable
+    date_expir_carte: date nullable
+    local: string:255 nullable
+    adresse_domic: string:255 nullable
+    majles: string:255 nullable
+    fonction: string:255 nullable
+    sexe: string:255 nullable
+    depot: string:255 nullable
+    mutation: string:255 nullable
+    date_capa: date nullable
+    ex_proff: string:255 nullable
+    scotab: string:255 nullable
+    sit_prof: string:255 nullable
+    date_reglement: date nullable
+    datcosup: date nullable
+    lieu_nais_arb: string:255 nullable
+    lieu_nais_fr: string:255 nullable
+    willaya_nais_fr: string:255 nullable
+    fin_carte_prof: date nullable
+    tel: string:255 nullable
+    fax: string:255 nullable
+    mob: string:255 nullable
+    email: string:255 nullable
+    num_act_nais: string:255 nullable
+    nom_pere: string:255 nullable
+    nom_mere: string:255 nullable
+    user_id: foreignId
+    relationships :
+      belongsTo : User
+
+  News:
+    title: string:255
+    slug: string:255 unique
+    content: text
+    attachments: string:255 nullable
+    thumbnail: string:255 nullable
+    user_id: foreignId
+    relationships :
+      belongsTo : User, Cat_news
+
+
+  Cat_news:
+    title: string:255
+    slug: string:255 unique
+    relationships :
+      hasMany : News
+
+  Event:
+    title: string:255
+    slug: string:255 unique
+    content: text
+    attachments: string:255 nullable
+    thumbnail: string:255 nullable
+    user_id: foreignId
+    relationships :
+      belongsTo : User, Cat_event
+
+
+  Cat_event:
+    title: string:255
+    slug: string:255 unique
+    relationships :
+      hasMany : Event
+
+controllers:
+  LawyerController:
+    index:
+      query: all
+      render: lawyers.index with:locations
+    show:
+      render: lawyers.show with:layer
+    store:
+      validate: code, nom_arb, prenom_arb, date_naiss, nom_fr, prenom_fr, etat
+      save: lawyer
+      redirect: lawyers.index with:layers
+    update:
+      validate: code, nom_arb, prenom_arb, date_naiss, nom_fr, prenom_fr, etat
+      redirect: lawyers.index with:layers
+    destroy:
+      delete: lawyer
+      redirect: lawyers.index with:layers
+  NewsController:
+    index:
+      query: all
+      render: newses.index with:newses
+    show:
+      render: newses.show with:news
+    store:
+      validate: title, slug, content
+      save: news
+      redirect: newses.index with:newses
+    update:
+      validate: title, slug, content
+      save: news
+      redirect: newses.index with:newses
+    destroy:
+      delete: news
+      redirect: newses.index with:newses
+
+  Cat_newsController:
+    index:
+      query: all
+      render: cat_newses.index with:cat_newses
+    show:
+      render: cat_newses.index with:cat_newses
+    store:
+      validate: title, slug
+      save: cat_news
+      redirect: cat_newses.index with:cat_newses
+    update:
+      validate: title, slug
+      save: cat_news
+      redirect: cat_newses.index with:cat_newses
+    destroy:
+      delete: cat_news
+      redirect: cat_newses.index with:cat_newses
+
+  EventController:
+    index:
+      query: all
+
+
+  Cat_eventsController:
+
+    index:
+      query: all
+

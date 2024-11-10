@@ -11,34 +11,12 @@ use Illuminate\View\View;
 
 class LawyerController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request)
     {
         $lawyers = Lawyer::all();
 
-        return view('lawyers.index', compact('locations'));
+        return view('admin.lawyers.index', compact('lawyers'));
     }
 
-    public function show(Request $request, Lawyer $lawyer): Response
-    {
-        return view('lawyers.show', compact('layer'));
-    }
 
-    public function store(LawyerControllerStoreRequest $request): Response
-    {
-        $lawyer = Lawyer::create($request->validated());
-
-        return redirect()->route('lawyers.index', [$layers]);
-    }
-
-    public function update(LawyerControllerUpdateRequest $request, Lawyer $lawyer): Response
-    {
-        return redirect()->route('lawyers.index', [$layers]);
-    }
-
-    public function destroy(Request $request, Lawyer $lawyer): Response
-    {
-        $lawyer->delete();
-
-        return redirect()->route('lawyers.index', [$layers]);
-    }
 }

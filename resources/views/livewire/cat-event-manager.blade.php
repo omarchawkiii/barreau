@@ -6,16 +6,18 @@
                     <div class="row justify-content-between">
                         <div class="col-md-6">
                             <div class="text-lg-start my-1 my-lg-0">
-                               <h4> Gestion des catégories News</h4>
+                               <h4> Gestion des catégories des evenements</h4>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="text-lg-end my-1 my-lg-0">
-                                <button class="btn btn-barreau-primary " data-bs-toggle="modal" data-bs-target="#categoryModal">
+                                <button class="btn btn-barreau-primary" data-bs-toggle="modal" data-bs-target="#categoryModal">
                                     <i class="mdi mdi-plus-circle me-2"></i> Ajouter nouveau
                                 </button>
                             </div>
                         </div>
+
                     </div> <!-- end row -->
                 </div>
             </div> <!-- end card -->
@@ -37,14 +39,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($catNews as $key=> $cat)
+                            @foreach($catEvents as $key=> $cat)
                                 <tr>
                                     <td>{{ $key +1 }}</td>
                                     <td>{{ $cat->title }}</td>
                                     <td>{{ $cat->slug }}</td>
-                                    <td>{{ $cat->news->count() }}</td>
+                                    <td>{{ $cat->events->count() }}</td>
                                     <td>
-                                        <a href="javascript:void(0);"  class="action-icon" onclick="edit_cat({{ $cat->id }})" > <i class="mdi mdi-square-edit-outline text-warning"></i></button>
+                                        <a href="javascript:void(0);" onclick="edit_cat({{ $cat->id }})" class="action-icon" > <i class="mdi mdi-square-edit-outline text-warning"></i></button>
                                         <a href="javascript:void(0);" class="action-icon" onclick="confirmDeletion({{ $cat->id }})"> <i class="mdi mdi-delete text-danger" ></i></button>
 
                                     </td>
@@ -113,6 +115,7 @@
         });
     }
 </script>
+
 <script>
     function edit_cat(id) {
         $('#categoryModal').modal('show');
@@ -120,6 +123,7 @@
 
     }
 </script>
+
 <script>
     window.addEventListener('close-modal', event => {
         $('#categoryModal').modal('hide');
@@ -146,7 +150,6 @@
 
 
 </script>
-
 
 @section('custom_script')
     <script>

@@ -2,19 +2,20 @@
 
 namespace App\Livewire;
 
-use App\Models\CatNews;
+use App\Models\CatEvent;
+use App\Models\catEvents;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use \Livewire\WithEvents;
 
 
-class CatNewsManager extends Component
+class CatEventManager extends Component
 {
 
-    public $catNews;
+    public $catEvents;
     public $title;
     public $slug;
-    public $catNewsId;
+    public $catEventsId;
     public $isEditing = false;
 
     protected $rules = [
@@ -27,18 +28,18 @@ class CatNewsManager extends Component
     }
     public function mount()
     {
-        $this->loadCatNews();
+        $this->loadcatEvents();
     }
 
-    public function loadCatNews()
+    public function loadcatEvents()
     {
-        $this->catNews = CatNews::all();
+        $this->catEvents = CatEvent::all();
     }
 
     public function resetForm()
     {
         $this->title = '';
-        $this->catNewsId = null;
+        $this->catEventsId = null;
         $this->isEditing = false;
     }
 
@@ -47,7 +48,7 @@ class CatNewsManager extends Component
         try {
 
             $this->validate();
-            CatNews::create([
+            CatEvent::create([
                 'title' => $this->title,
                 'slug' =>$this->generateUniqueSlug($this->title),
                 ]
@@ -60,7 +61,7 @@ class CatNewsManager extends Component
                 iconColor:'blue',
             );
             $this->dispatch('close-modal');
-            $this->loadCatNews();
+            $this->loadcatEvents();
             session()->flash('message', 'Catégorie ajoutée avec succès.');
         }catch (\Exception $e) {
             // Gestion de l'erreur
@@ -77,11 +78,12 @@ class CatNewsManager extends Component
 
     public function edit($id)
     {
-        $catNews = CatNews::findOrFail($id);
-        $this->title = $catNews->title;
-        $this->slug = $catNews->slug;
-        $this->catNewsId = $catNews->id;
+        $catEvents = CatEvent::findOrFail($id);
+        $this->title = $catEvents->title;
+        $this->slug = $catEvents->slug;
+        $this->catEventsId = $catEvents->id;
         $this->isEditing = true;
+
     }
 
     public function update()
@@ -89,17 +91,17 @@ class CatNewsManager extends Component
 
         if($this->slug != null)
         {
-            $slug = $this->generateUniqueSlug($this->slug,$this->catNewsId) ;
+            $slug = $this->generateUniqueSlug($this->slug,$this->catEventsId) ;
         }
         else
         {
-            $slug = $this->generateUniqueSlug($this->title,$this->catNewsId) ;
+            $slug = $this->generateUniqueSlug($this->title,$this->catEventsId) ;
         }
         $this->validate();
-        $catNews = CatNews::findOrFail($this->catNewsId);
-        $catNews->update(['title' => $this->title,'slug' =>$slug]);
+        $catEvents = CatEvent::findOrFail($this->catEventsId);
+        $catEvents->update(['title' => $this->title,'slug' =>$slug]);
         $this->resetForm();
-        $this->loadCatNews();
+        $this->loadcatEvents();
         $this->dispatch('swal',
             title : 'Modification réussie',
             text : 'La catégorie a été modifiée avec succès !.',
@@ -112,8 +114,8 @@ class CatNewsManager extends Component
 
     public function delete($id)
     {
-        CatNews::findOrFail($id)->delete();
-        $this->loadCatNews();
+        CatEvent::findOrFail($id)->delete();
+        $this->loadcatEvents();
         $this->dispatch('swal',
             title : 'Suppression réussie',
             text : 'La catégorie a été supprimée avec succès !.',
@@ -125,7 +127,7 @@ class CatNewsManager extends Component
 
     public function render()
     {
-        return view('livewire.cat-news-manager');
+        return view('livewire.cat-event-manager');
     }
 
     private function generateUniqueSlug($title, $catid=null)
@@ -137,7 +139,7 @@ class CatNewsManager extends Component
 
             // Cherche un slug unique
             $count = 1;
-            while(CatNews::where('slug', $slug)->where('id','!=', $catid)->exists())
+            while(CatEvent::where('slug', $slug)->where('id','!=', $catid)->exists())
             {
                 $slug = $originalSlug . '-' . $count;
                 $count++;
@@ -152,7 +154,7 @@ class CatNewsManager extends Component
 
             // Cherche un slug unique
             $count = 1;
-            while(CatNews::where('slug', $slug)->exists())
+            while(CatEvent::where('slug', $slug)->exists())
             {
                 $slug = $originalSlug . '-' . $count;
                 $count++;

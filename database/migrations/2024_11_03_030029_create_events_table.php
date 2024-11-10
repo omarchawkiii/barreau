@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('content');
             $table->string('attachments', 255)->nullable();
             $table->string('thumbnail', 255)->nullable();
-            $table->foreignId('user_id');
-            $table->foreignId('cat_event_id');
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('cat_event_id')->onDelete('cascade');
             $table->timestamps();
         });
     }

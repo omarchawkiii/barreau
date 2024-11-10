@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class News extends Model
 {
     use HasFactory;
-
+    protected $table = 'news';
     /**
      * The attributes that are mass assignable.
      *
@@ -43,6 +43,6 @@ class News extends Model
 
     public function catNews(): BelongsTo
     {
-        return $this->belongsTo(CatNews::class);
+        return $this->belongsTo(CatNews::class, 'cat_news_id');
     }
 }

@@ -10,7 +10,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <livewire:news-manager>
+                <livewire:cat-event-manager />
             </div>
         </div>
 
@@ -18,7 +18,6 @@
 
 </div>
 @endsection
-
 
 @section('customcss')
     <style>

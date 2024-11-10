@@ -54,7 +54,7 @@ return new class extends Migration
             $table->string('num_act_nais', 255)->nullable();
             $table->string('nom_pere', 255)->nullable();
             $table->string('nom_mere', 255)->nullable();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->onDelete('cascade');
             $table->timestamps();
         });
     }

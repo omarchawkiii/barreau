@@ -77,6 +77,78 @@
                     <span class="menu-text"> Blank Page  </span>
                 </a>
             </li>
+            <li class="menu-item">
+                <a href="#menunews" data-bs-toggle="collapse" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-newspaper"></i></span>
+                    <span class="menu-text"> Gestion des Actualités   </span>
+                    <span class="mdi mdi-dots-vertical"></span>
+                </a>
+                <div class="collapse" id="menunews">
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="{{ route('admin.news') }}" class="menu-link">
+                                <span class="menu-text">Actualités </span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{ route('admin.cat-news') }}" class="menu-link">
+                                <span class="menu-text">Catégories D'actualités </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+            <li class="menu-item">
+                <a href="#menuevents" data-bs-toggle="collapse" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-receipt"></i></span>
+                    <span class="menu-text"> Gestion des Evenements   </span>
+                    <span class="mdi mdi-dots-vertical"></span>
+                </a>
+                <div class="collapse" id="menuevents">
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="{{ route('admin.events') }}" class="menu-link">
+                                <span class="menu-text">Evenements </span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{ route('admin.cat-events') }}" class="menu-link">
+                                <span class="menu-text">Catégories D'evenements </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+            <li class="menu-item">
+                <a href="#menuuser" data-bs-toggle="collapse" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-receipt"></i></span>
+                    <span class="menu-text"> Gestion des utilisateurs   </span>
+                    <span class="mdi mdi-dots-vertical"></span>
+                </a>
+                <div class="collapse" id="menuuser">
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="{{ route('admin.lawyers') }}" class="menu-link">
+                                <span class="menu-text">Administrateurs  </span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{ route('admin.lawyers') }}" class="menu-link">
+                                <span class="menu-text">Avocats</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+
+
+
             <!--
             <li class="menu-item">
                 <a href="#menuDashboards" data-bs-toggle="collapse" class="menu-link">

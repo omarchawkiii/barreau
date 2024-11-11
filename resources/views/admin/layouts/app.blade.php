@@ -13,7 +13,7 @@
 
         <!-- App favicon -->
         <link rel="stylesheet" href="{{ asset('/assets/admin/assets/css/materialdesignicons.min.css') }}">
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('/assets/admin/assets/images/favicon.ico') }}">
 
         <!-- Plugins css -->
         <link href="{{ asset('/assets/admin/assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet')}}" type="text/css" />

@@ -273,7 +273,7 @@
     <section class="blog-area ptb-100 bg-color">
         <div class="container">
             <div class="section-title">
-                <h2>Actualités</h2>
+                <h2> <i class="bx bx-news"></i>  Actualités</h2>
                 <p>Plongez-vous dans l'actualité visuelle et découvrez des histoires uniques, des moments émouvants et des perspectives fascinantes, le tout à travers des médias immersifs.</p>
             </div>
 
@@ -416,11 +416,7 @@
                             <img src="assets/img/partner/partner-4.png" alt="Image">
                         </a>
                     </div>
-                    <div class="partner-item">
-                        <a href="about-us.html">
-                            <img src="assets/img/partner/partner-5.png" alt="Image">
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </div>

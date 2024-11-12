@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,6 +14,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        \App\Models\User::factory()->superAdmin()->create();
+
+        // Création de Lawyer
+        \App\Models\User::factory()->lawyer()->create();
+
+
+
+
+        $this->call([
+            RoleAndPermissionSeeder::class,
+        ]);
+        $superAdminRole = Role::firstOrCreate(['name' => 'SuperAdmin']);
+        $user = User::firstOrCreate(['email' => 'superadmin@example.com']);
+        $user->assignRole($superAdminRole);
+
+        $lawyerRole = Role::firstOrCreate(['name' => 'Lawyer']);
+        $user2 = User::firstOrCreate(['email' => 'lawyer@example.com']);
+        $user2->assignRole($lawyerRole);
+        // Création de SuperAdmin
+
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

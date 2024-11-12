@@ -2,9 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -30,6 +32,44 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
+    }
+    public function superAdmin()
+    {
+        return $this->state(function (array $attributes) {
+            // Assurez-vous que le rôle SuperAdmin existe
+
+            $user =[
+                'name' => 'SuperAdmin',
+                'email' => 'superadmin@example.com',
+                'password' => bcrypt('12345678') // Mot de passe par défaut
+            ];
+            // Assigner le rôle à l'utilisateur
+
+
+            return $user;
+        });
+    }
+
+    /**
+     * Créer un utilisateur avec le rôle Lawyer
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    public function lawyer()
+    {
+        return $this->state(function (array $attributes) {
+            // Assurez-vous que le rôle Lawyer existe
+
+            $user = [
+                'name' => 'Lawyer',
+                'email' => 'lawyer@example.com',
+                'password' => bcrypt('12345678') // Mot de passe par défaut
+            ];
+            // Assigner le rôle à l'utilisateur
+
+
+            return $user;
+        });
     }
 
     /**

@@ -77,6 +77,10 @@
                     <span class="menu-text"> Blank Page  </span>
                 </a>
             </li>
+            @can('Manage News')
+
+            @endcan
+            @role('SuperAdmin')
             <li class="menu-item">
                 <a href="#menunews" data-bs-toggle="collapse" class="menu-link">
                     <span class="menu-icon"><i class="mdi mdi-newspaper"></i></span>
@@ -145,7 +149,7 @@
                     </ul>
                 </div>
             </li>
-
+            @endrole
 
 
 

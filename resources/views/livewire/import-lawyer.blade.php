@@ -161,7 +161,7 @@
 
                         {{--  --}}
 
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="adresse_prof_arb">Adresse Professionnelle Arb</label>
                             <input type="text" id="adresse_prof_arb" class="form-control"
                                 wire:model="adresse_prof_arb">
@@ -169,28 +169,28 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="commune">Commune</label>
                             <input type="text" id="commune" class="form-control" wire:model="commune">
                             @error('commune')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="willaya">Willaya</label>
                             <input type="text" id="willaya" class="form-control" wire:model="willaya">
                             @error('willaya')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="adresse_fr">Adresse Française</label>
                             <input type="text" id="adresse_fr" class="form-control" wire:model="adresse_fr">
                             @error('adresse_fr')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="fin_contrat_local">Fin Contrat Local</label>
                             <input type="date" id="fin_contrat_local" class="form-control"
                                 wire:model="fin_contrat_local">
@@ -198,7 +198,7 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="date_expir_carte">Date Expiration Carte</label>
                             <input type="date" id="date_expir_carte" class="form-control"
                                 wire:model="date_expir_carte">
@@ -206,14 +206,14 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="local">Local</label>
                             <input type="text" id="local" class="form-control" wire:model="local">
                             @error('local')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="adresse_domic">Adresse Domicile</label>
                             <input type="text" id="adresse_domic" class="form-control"
                                 wire:model="adresse_domic">
@@ -221,21 +221,21 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="majles">Majles</label>
                             <input type="text" id="majles" class="form-control" wire:model="majles">
                             @error('majles')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="fonction">Fonction</label>
                             <input type="text" id="fonction" class="form-control" wire:model="fonction">
                             @error('fonction')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="sexe">Sexe</label>
                             <select id="sexe" class="form-control" wire:model="sexe">
                                 <option value="">-- Sélectionnez --</option>
@@ -246,35 +246,35 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="depot">Dépot</label>
                             <input type="text" id="depot" class="form-control" wire:model="depot">
                             @error('depot')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="mutation">Mutation</label>
                             <input type="text" id="mutation" class="form-control" wire:model="mutation">
                             @error('mutation')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="date_capa">Date Capa</label>
                             <input type="date" id="date_capa" class="form-control" wire:model="date_capa">
                             @error('date_capa')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="ex_proff">Ex Profession</label>
                             <input type="text" id="ex_proff" class="form-control" wire:model="ex_proff">
                             @error('ex_proff')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="scotab">Scotab</label>
                             <input type="text" id="scotab" class="form-control" wire:model="scotab">
                             @error('scotab')
@@ -282,68 +282,68 @@
                             @enderror
                         </div>
 
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="sit_prof">Situation Professionnelle</label>
                             <input type="text" id="sit_prof" class="form-control" wire:model="sit_prof">
                             @error('sit_prof') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="date_reglement">Date de Règlement</label>
                             <input type="date" id="date_reglement" class="form-control" wire:model="date_reglement">
                             @error('date_reglement') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="datcosup">Datcosup</label>
                             <input type="date" id="datcosup" class="form-control" wire:model="datcosup">
                             @error('datcosup') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="lieu_nais_arb">Lieu Naissance (Arabe)</label>
                             <input type="text" id="lieu_nais_arb" class="form-control" wire:model="lieu_nais_arb">
                             @error('lieu_nais_arb') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="lieu_nais_fr">Lieu Naissance (Français)</label>
                             <input type="text" id="lieu_nais_fr" class="form-control" wire:model="lieu_nais_fr">
                             @error('lieu_nais_fr') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="willaya_nais_fr">Willaya Naissance (Français)</label>
                             <input type="text" id="willaya_nais_fr" class="form-control" wire:model="willaya_nais_fr">
                             @error('willaya_nais_fr') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="fin_carte_prof">Fin Carte Professionnelle</label>
                             <input type="date" id="fin_carte_prof" class="form-control" wire:model="fin_carte_prof">
                             @error('fin_carte_prof') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="tel">Téléphone</label>
                             <input type="text" id="tel" class="form-control" wire:model="tel">
                             @error('tel') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="fax">Fax</label>
                             <input type="text" id="fax" class="form-control" wire:model="fax">
                             @error('fax') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="mob">Mobile</label>
                             <input type="text" id="mob" class="form-control" wire:model="mob">
                             @error('mob') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="num_act_nais">Numéro Acte de Naissance</label>
                             <input type="text" id="num_act_nais" class="form-control" wire:model="num_act_nais">
                             @error('num_act_nais') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="nom_pere">Nom du Père</label>
                             <input type="text" id="nom_pere" class="form-control" wire:model="nom_pere">
                             @error('nom_pere') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group col-md-4 mt-3">
+                        <div class="form-group col-3 mt-3">
                             <label for="nom_mere">Nom de la Mère</label>
                             <input type="text" id="nom_mere" class="form-control" wire:model="nom_mere">
                             @error('nom_mere') <span class="text-danger">{{ $message }}</span> @enderror

@@ -4,9 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\CatEvent;
+use App\Models\CatNews;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -20,7 +23,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->lawyer()->create();
 
 
-
+        CatEvent::factory()->count(20)->create();
+        CatNews::factory()->count(20)->create();
 
         $this->call([
             RoleAndPermissionSeeder::class,

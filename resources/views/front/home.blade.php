@@ -27,6 +27,38 @@
     </section>
     <!-- End Banner Area -->
 
+    {{-- Start Login  Area --}}
+    <section id="login-section" class="my-5">
+        <div class="container">
+            <div class="login-container text-center">
+              <h3 class="mb-5">Accédez à votre espace <span class="primay-color">Ordre des avocats d'Alger</span></h3>
+              <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="d-flex justify-content-center">
+                    <div class="icon mb-3">
+                        <img src="{{ asset('/assets/icons/icon_avocat.png') }}" class="img-thumbnail">
+                      </div>
+                    <div class="mr-3 ">
+                        <input type="text" name="email" class="form-control rounded" placeholder="E-mail">
+                    </div>
+                    <div class="mx-3 ">
+                        <input type="password" name="password" class="form-control rounded" placeholder="Mot de passe">
+                    </div>
+                    <div class="ml-3">
+                        <button type="submit" class="default-btn rounded">Se connecter</button>
+                    </div>
+                </div>
+                
+              </form>
+              <p class="create-account mt-3">
+                Vous n’avez pas de compte ? <a href="#" class="text-decoration-none">Créer un</a>.
+              </p>
+            </div>
+          </div>
+    </section>
+    
+     {{-- End Login  Area --}}
+
     <!-- Start Choose Us Area -->
     <section class="choose-us-area pt-100 pb-70 bg-barreau-light">
         <div class="container">

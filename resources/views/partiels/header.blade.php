@@ -75,13 +75,13 @@
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav m-auto">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                                <a href="{{route('front.home')}}" class="nav-link {{ Route::currentRouteName() == 'front.home' ? 'active' : '' }}">
                                     Accueil
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('front.lawyers')}}" class="nav-link {{ Route::currentRouteName() == 'front.lawyers' ? 'active' : '' }}">
                                     Tableau des avocats
                                 </a>
                             </li>

@@ -39,9 +39,13 @@ Route::get('/', function () {
     $super_admin = User::find(6) ;
     $super_admin->assignRole('SuperAdmin');*/
 
-
      return view('front.home');
-});
+})->name('front.home');
+
+Route::get('/lawyers', function () {
+    return view('front.lawyers');
+})->name('front.lawyers');
+
 
 Route::get('/admin/home', function () {
     return view('admin.home');

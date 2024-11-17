@@ -2,9 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\CatNews;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\Cat_news;
 
 class CatNewsFactory extends Factory
 {

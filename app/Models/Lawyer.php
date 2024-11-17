@@ -10,6 +10,11 @@ class Lawyer extends Model
 {
     use HasFactory;
 
+    public const MALE = "male";
+    public const FEMALE = "female";
+
+    public const GENDER = [self::MALE, self::FEMALE];
+
     /**
      * The attributes that are mass assignable.
      *

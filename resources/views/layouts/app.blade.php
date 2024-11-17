@@ -31,6 +31,44 @@
 		<!-- Responsive CSS -->
 		<link rel="stylesheet" href="{{ asset('/assets/css/responsive.css')}}">
 
+		<style>
+			section#login-section h3 span {
+				color: #B99B5C !important;
+			}
+			section#login-section input {
+				width: 291px;
+				height: 55px;
+				opacity: 1;
+				background-color: #E0D3B8;
+				color: #ffffff;
+			}
+			section#login-section input:valid {
+				width: 291px;
+				height: 55px;
+				opacity: 1;
+				background-color: #E0D3B8;
+				color: #ffffff;
+			}
+			section#login-section button {
+				height: 55px;
+				width: 291px;
+				background-color: black
+			}
+			section#login-section .img-thumbnail {
+				border: none;
+    			height: 55px;
+			}
+
+			section#login-section input::-webkit-input-placeholder {
+				color: #ffffff; /* Chrome, Safari */
+			}
+			section#login-section input:-ms-input-placeholder {
+				color: #ffffff; /* Internet Explorer 10-11 */
+			}
+			section#login-section input::placeholder {
+				color: #ffffff; /* Standard */
+			}
+		</style>
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="{{ asset('/assets/img/favicon.png')}}">
 		<!-- Title -->

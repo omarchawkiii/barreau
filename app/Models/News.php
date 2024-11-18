@@ -39,7 +39,7 @@ class News extends Model
     public function getThumbnailUrlAttribute()
     {
         $baseUrl = config('app.url'); // Or any other base URL
-        return  $baseUrl . env('STORAGE_PREFIX','') . $this->thumbnail ;
+        return  $baseUrl . env('STORAGE_PREFIX','/') . $this->thumbnail ;
     }
 
     public function user(): BelongsTo

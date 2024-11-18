@@ -23,11 +23,12 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->lawyer()->create();
 
 
-        CatEvent::factory()->count(20)->create();
-        CatNews::factory()->count(20)->create();
+        // CatEvent::factory()->count(20)->create();
+        // CatNews::factory()->count(20)->create();
 
         $this->call([
             RoleAndPermissionSeeder::class,
+            CategoriesSeeder::class,
         ]);
         $superAdminRole = Role::firstOrCreate(['name' => 'SuperAdmin']);
         $user = User::firstOrCreate(['email' => 'superadmin@example.com']);

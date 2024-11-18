@@ -127,6 +127,7 @@
                             <h4 class="text-center"><i class="bx bx-calendar"></i> {{$event_category_annonces?->title}}</h4>
                             <p class="text-center text-dark">Restez au fait des développements importants! <br /> Ne manquez aucune mise a jour des annonces  </p>
                         </div>
+                        @if ($event_category_annonces)
                         @foreach ($event_category_annonces?->events as $event)
                         <div class="card bg-barreau-light mb-2">
                             <div class="row no-gutters p-2">
@@ -144,6 +145,8 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif
+
                         
                 
                         <div class=" text-center">
@@ -159,6 +162,7 @@
                             <h4 class="text-center"><i class="bx bx-calendar"></i> {{$event_category_deliberation?->title}}</h4>
                             <p class="text-center text-dark">Restez au fait des développements importants! <br /> Ne manquez aucune mise a jour des annonces</p>
                         </div>
+                        @if ($event_category_deliberation)
                         @foreach ($event_category_deliberation?->events as $event)
                         <div class="card bg-barreau-light mb-2">
                             <div class="row no-gutters p-2">
@@ -176,6 +180,7 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif
                         
                         <div class=" text-center">
                             <a href="about-us.html" class="default-btn btn  btn-light-barreau ">
@@ -191,7 +196,9 @@
                             <h4 class="text-center"><i class="bx bx-calendar"></i> {{$event_category_memoires?->title}}</h4>
                             <p class="text-center text-dark">Restez au fait des développements importants! <br /> Ne manquez aucune mise a jour des annonces</p>
                         </div>
-                        @foreach ($event_category_deliberation?->events as $event)
+
+                        @if ($event_category_memoires)
+                        @foreach ($event_category_memoires?->events as $event)
                         <div class="card bg-barreau-light mb-2">
                             <div class="row no-gutters p-2">
                                 <!-- Image à gauche -->
@@ -208,6 +215,7 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif
                         <div class=" text-center">
                             <a href="about-us.html" class="default-btn btn  btn-light-barreau ">
                                 <span>Plus de nouvelle </span>
@@ -234,6 +242,7 @@
                         <h4>{{$news_category_photos?->title}}</h2>
                     </div>
                     <div class="row">
+                        @if ($news_category_photos)
                         @foreach ($news_category_photos?->news as $news)
                         <div class="single-blog-post col-md-5">
                             <div class="post-image">
@@ -248,6 +257,7 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif
                         
                     </div>
                     <div class=" text-center">
@@ -262,6 +272,7 @@
                         <h4>{{$news_category_videos?->title}}</h2>
                     </div>
                     <div class="row">
+                        @if ($news_category_videos)
                         @foreach ($news_category_videos?->news as $news)
                         <div class="single-blog-post col-md-5">
                             <div class="post-image">
@@ -276,6 +287,7 @@
                             </div>
                         </div>
                         @endforeach
+                        @endif
                     </div>
                     <div class=" text-center">
                         <a href="about-us.html" class="default-btn btn  ">

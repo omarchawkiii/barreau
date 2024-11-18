@@ -7,8 +7,6 @@
 		<!-- Bootstrap Min CSS -->
 		<link rel="stylesheet" href="{{ asset('/assets/css/bootstrap.min.css')}}">
 
-        @livewireStyles
-
         <title>Dashboard | Ubold - Responsive Bootstrap 5 Admin Dashboard</title>
 
         <!-- App favicon -->
@@ -30,6 +28,7 @@
         <!-- App css -->
         <link href="{{ asset('/assets/admin/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" />
 
+        {{-- @livewireStyles --}}
         <!-- Icons css -->
 
         @yield('customcss')
@@ -83,7 +82,7 @@
         <script src="{{asset('/assets/admin/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
         <script src="{{asset('/assets/admin/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
 
-        @livewireScripts
+        {{-- @livewireScripts --}}
         @yield('custom_script')
     </body>
 

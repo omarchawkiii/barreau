@@ -10,6 +10,11 @@ class CatEvent extends Model
 {
     use HasFactory;
 
+    public const CATEGORY_ANNONCES = "Annonces";
+    public const CATEGORY_DELIBERATION = "Délibération";
+    public const CATEGORY_MEMOIRES = "Mémoires et déclartion";
+
+
     /**
      * The attributes that are mass assignable.
      *

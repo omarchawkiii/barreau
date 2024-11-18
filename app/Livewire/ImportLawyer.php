@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Http\Requests\LawyerStoreRequest;
 use App\Models\CatNews;
 use App\Models\Lawyer;
 use App\Models\News;
@@ -13,11 +14,14 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 
+use function Laravel\Prompts\error;
+
 class ImportLawyer extends Component
 {
     use WithFileUploads;
 
 
+    public $lawyer_id ;
     public $code ;
     public $nom_arb ;
     public $prenom_arb ;
@@ -64,17 +68,18 @@ class ImportLawyer extends Component
     public $loading = false;
     public $isEditing = false;
 
+    protected $rules;
 
-    protected function rules()
+    public function placeholder()
     {
-        return [
-            'excelFile' => 'required|file'
-        ];
+        return view('admin.placeholder.popup_placeholder');
     }
+
 
     public function resetForm()
     {
 
+        $this->lawyer_id  = null ;
         $this->code  = null ;
         $this->nom_arb  = null ;
         $this->prenom_arb  = null ;
@@ -124,18 +129,16 @@ class ImportLawyer extends Component
 
     public function add()
     {
-        $this->validate();
-            $thumbnailPath = $this->thumbnail ? $this->thumbnail->store('thumbnails', 'public') : null;
+        $validated_data = $this->validate((new LawyerStoreRequest())->rules());
+        try {
 
-            $new = News::create([
-                'title' => $this->title,
-                'slug' =>$this->generateUniqueSlug($this->title),
-                'content' => $this->content,
-                'thumbnail' => $thumbnailPath,
-                'cat_news_id' => $this->cat_news_id,
-                'user_id' => 1
+            $user = User::create([
+                "email" => $this->email,
+                "name" => $this->nom_fr ." ".$this->prenom_fr,
+                "password" => encrypt(rand(10000000,99999999)),
             ]);
 
+            Lawyer::create(array_merge($validated_data, ['user_id'=>$user->id]));
 
             $this->dispatch('swal',
                 title : 'Création réussie',
@@ -147,7 +150,7 @@ class ImportLawyer extends Component
             $this->resetForm();
             $this->dispatch('close-modal');
 
-        /*} catch (\Exception $e) {
+        } catch (\Exception $e) {
             session()->flash('status', 'error');
             session()->flash('message', 'Une erreur est survenue lors de la création de l\'événement.');
             $this->dispatch('swal',
@@ -156,13 +159,14 @@ class ImportLawyer extends Component
                 icon : 'error',
                 iconColor : '#d33',
             );
-        }*/
+        }
     }
 
     public function edit($id)
     {
         $lawyer = Lawyer::findOrFail($id);
 
+        $this->lawyer_id  = $id ;
         $this->code  = $lawyer->code  ;
         $this->nom_arb  = $lawyer->nom_arb  ;
         $this->prenom_arb  = $lawyer->prenom_arb  ;
@@ -205,44 +209,17 @@ class ImportLawyer extends Component
         $this->nom_pere  = $lawyer->nom_pere  ;
         $this->nom_mere  = $lawyer->nom_mere  ;
         $this->user_id  = $lawyer->user_id  ;
-        $this->isEditing = $lawyer->true ;
+        $this->isEditing = true ;
     }
 
     public function update()
     {
-        $this->validate();
-
+        $validated_data = $this->validate((new LawyerStoreRequest())->rules());
+        
+        
         try {
-            $news = News::findOrFail($this->newsId);
-
-
-
-            if ($this->thumbnail instanceof \Illuminate\Http\UploadedFile) {
-                // Delete the old image if it exists
-                if ($news->thumbnail) {
-                    Storage::disk('public')->delete($news->thumbnail);
-                }
-                // Store the new image
-                $news->thumbnail = $this->thumbnail->store('thumbnails', 'public');
-            }
-
-
-            if($this->slug != null)
-            {
-                $slug = $this->generateUniqueSlug($this->slug,$this->newsId) ;
-            }
-            else
-            {
-                $slug = $this->generateUniqueSlug($this->title,$this->newsId) ;
-            }
-
-
-            $news->update([
-                'title' => $this->title,
-                'slug' => $slug,
-                'content' => $this->content,
-                'cat_news_id' => $this->cat_news_id,
-            ]);
+            $lawyer = Lawyer::findOrFail($this->lawyer_id);
+            $lawyer->update($validated_data);
 
             session()->flash('status', 'success');
             session()->flash('message', 'Mise à jour réussie');
@@ -296,7 +273,8 @@ class ImportLawyer extends Component
     }
     public function upload_lawyer()
     {
-        $this->validate();
+        $this->rules = $this->rulesForUpload;
+        $this->validate(['excelFile' => 'required|file']);
         try
         {
             $this->loading = true;

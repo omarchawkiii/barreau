@@ -36,6 +36,12 @@ class Event extends Model
         'cat_event_id' => 'integer',
     ];
 
+    public function getThumbnailUrlAttribute()
+    {
+        $baseUrl = config('app.url'); // Or any other base URL
+        return  $baseUrl . env('STORAGE_PREFIX','') . $this->thumbnail ;
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Cat_newsController;
 use App\Http\Controllers\Cat_eventsController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\LawyerController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
@@ -22,7 +23,7 @@ use App\Models\User;
 |
 */
 
-Route::get('/', function () {
+Route::get('/',  [HomeController::class, 'index'])->name('front.home');
     /*$role = Role::create(['name' => 'SuperAdmin']);
     $role_admin = Role::create(['name' => 'Admin']);
     $role_lawyer = Role::create(['name' => 'Lawyer']);
@@ -39,8 +40,7 @@ Route::get('/', function () {
     $super_admin = User::find(6) ;
     $super_admin->assignRole('SuperAdmin');*/
 
-     return view('front.home');
-})->name('front.home');
+
 
 Route::get('/lawyers', function () {
     return view('front.lawyers');

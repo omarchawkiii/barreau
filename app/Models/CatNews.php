@@ -11,6 +11,8 @@ class CatNews extends Model
 {
     use HasFactory;
 
+    public const CATEGORY_PHOTOS = "Photos";
+    public const CATEGORY_VIDEOS = "Vidéos";
     /**
      * The attributes that are mass assignable.
      *

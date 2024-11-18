@@ -10,8 +10,8 @@ class Lawyer extends Model
 {
     use HasFactory;
 
-    public const MALE = "male";
-    public const FEMALE = "female";
+    public const MALE = "homme";
+    public const FEMALE = "femme";
 
     public const GENDER = [self::MALE, self::FEMALE];
 

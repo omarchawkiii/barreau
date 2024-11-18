@@ -239,8 +239,8 @@
                             <label for="sexe">Sexe</label>
                             <select id="sexe" class="form-control" wire:model="sexe">
                                 <option value="">-- Sélectionnez --</option>
-                                <option value="male">{{__("male")}}</option>
-                                <option value="female">{{__("female")}}</option>
+                                <option value="homme">{{__("homme")}}</option>
+                                <option value="famme">{{__("famme")}}</option>
                             </select>
                             @error('sexe')
                                 <span class="text-danger">{{ $message }}</span>

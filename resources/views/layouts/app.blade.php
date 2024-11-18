@@ -68,6 +68,20 @@
 			section#login-section input::placeholder {
 				color: #ffffff; /* Standard */
 			}
+
+			.active>.page-link, .page-link.active {
+				z-index: 3;
+				color: #fff;
+				background-color: #b99b5c;
+				border-color: #fff;
+				border-color: #b99b5c;
+			}
+
+			.page-link {
+				color: var(--ct-pagination-color);
+				background-color: #fff;
+				border: 1px solid #b99b5c;
+			}
 		</style>
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="{{ asset('/assets/img/favicon.png')}}">

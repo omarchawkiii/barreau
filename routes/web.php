@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
+/*saloua begin*/
+use App\Http\Controllers\ScrutinController;
+use App\Http\Controllers\Avocat\Demande\DemandeController;
+/*saloua end*/
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -86,6 +90,28 @@ Route::prefix('lawyer')->middleware(['role:lawyer'])->group( function () {
     // Routes des avocats
 
 });
+/*saloua begin*/
+Route::get('/avocat/home', function () {
+    return view('avocat.home');
+})->name('avocat.dashboard');
 
+Route::resource('scrutins', ScrutinController::class)->except([
+    'voter','resultats','representants','add']);
+/*saloua end*/
+// ** ############### Router for Avocat Dev Mohamed #######################################################################################################################
+ 
+    // Router avocat for demandes Dev Mohamed
+    Route::controller(DemandeController::class)->group(function (){
+        Route::get('avocat/demandes', 'index')->name('demandes');
+        Route::get('avocat/demandes/ajouter', 'create')->name('demandes.ajouter');
+        Route::post('avocat/demandes/store', 'store')->name('demandes.store');
+        Route::get('avocat/demandes/{demande}/voir', 'show')->name('demandes.voir');
+        Route::get('avocat/demandes/{demande}/modifier', 'edit')->name('demandes.modifier');
+        Route::patch('avocat/demandes/{demande}/update','update')->name('demandes.update');
+        Route::delete('avocat/demandes/{demande}/supprime','destroy')->name('demandes.supprime');
 
+        Route::delete('avocat/dossier/{dossier}/supprime','destroyDossier')->name('dossier.supprime');
+        Route::get('avocat/dossier/{dossier}/modifier','editDossier')->name('dossier.modifier');
+        Route::patch('avocat/dossier/{dossier}/update','updateDossier')->name('dossier.update');
 
+    });

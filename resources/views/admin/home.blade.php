@@ -28,8 +28,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="text-end">
-                                    <h3 class="text-dark mt-1">$<span data-plugin="counterup">58,94</span></h3>
-                                    <p class="text-muted mb-1 text-truncate">Total Revenue</p>
+                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">600</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">Nombre d'avocats</p>
                                 </div>
                             </div>
                         </div> <!-- end row-->
@@ -48,8 +48,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="text-end">
-                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">127</span></h3>
-                                    <p class="text-muted mb-1 text-truncate">Today's Sales</p>
+                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">12778</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">Agréments</p>
                                 </div>
                             </div>
                         </div> <!-- end row-->
@@ -68,8 +68,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="text-end">
-                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">0.58</span>%</h3>
-                                    <p class="text-muted mb-1 text-truncate">Conversion</p>
+                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">78945</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">Assistances</p>
                                 </div>
                             </div>
                         </div> <!-- end row-->
@@ -88,8 +88,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="text-end">
-                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">78.41</span>k</h3>
-                                    <p class="text-muted mb-1 text-truncate">Today's Visits</p>
+                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">14578</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">Plaintes</p>
                                 </div>
                             </div>
                         </div> <!-- end row-->
@@ -109,40 +109,40 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
+                                <a href="javascript:void(0);" class="dropdown-item">Agréments</a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                                <a href="javascript:void(0);" class="dropdown-item">Stages</a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Profit</a>
+                                <a href="javascript:void(0);" class="dropdown-item">Formations</a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                <a href="javascript:void(0);" class="dropdown-item">Plaintes</a>
                             </div>
                         </div>
 
-                        <h4 class="header-title mb-0">Total Revenue</h4>
+                        <h4 class="header-title mb-0">Revenue total</h4>
 
                         <div class="widget-chart text-center" dir="ltr">
 
                             <div id="total-revenue" class="mt-0" data-colors="#f1556c" style="min-height: 220.7px;">
                                 </div>
 
-                            <h5 class="text-muted mt-0">Total sales made today</h5>
-                            <h2>$178</h2>
+                            <h5 class="text-muted mt-0">Revenue total d'aujourd'hui</h5>
+                            <h2>178000 DA</h2>
 
-                            <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed to work best in the meat of your page content.</p>
+                            <p style="display:none;" class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed to work best in the meat of your page content.</p>
 
                             <div class="row mt-3">
                                 <div class="col-4">
-                                    <p class="text-muted font-15 mb-1 text-truncate">Target</p>
-                                    <h4><i class="fe-arrow-down text-danger me-1"></i>$7.8k</h4>
+                                    <p class="text-muted font-15 mb-1 text-truncate">En ce moment</p>
+                                    <h4><i class="fe-arrow-down text-danger me-1"></i>70000 DA</h4>
                                 </div>
                                 <div class="col-4">
-                                    <p class="text-muted font-15 mb-1 text-truncate">Last week</p>
-                                    <h4><i class="fe-arrow-up text-success me-1"></i>$1.4k</h4>
+                                    <p class="text-muted font-15 mb-1 text-truncate">Semaine passé</p>
+                                    <h4><i class="fe-arrow-up text-success me-1"></i>25600DA</h4>
                                 </div>
                                 <div class="col-4">
-                                    <p class="text-muted font-15 mb-1 text-truncate">Last Month</p>
-                                    <h4><i class="fe-arrow-down text-danger me-1"></i>$15k</h4>
+                                    <p class="text-muted font-15 mb-1 text-truncate">Mois dérnier</p>
+                                    <h4><i class="fe-arrow-down text-danger me-1"></i>15000 DA</h4>
                                 </div>
                             </div>
 
@@ -156,13 +156,13 @@
                     <div class="card-body pb-2">
                         <div class="float-end d-none d-md-inline-block">
                             <div class="btn-group mb-2">
-                                <button type="button" class="btn btn-xs btn-light">Today</button>
-                                <button type="button" class="btn btn-xs btn-light">Weekly</button>
-                                <button type="button" class="btn btn-xs btn-secondary">Monthly</button>
+                                <button type="button" class="btn btn-xs btn-light">Par jour</button>
+                                <button type="button" class="btn btn-xs btn-light">Par semaine</button>
+                                <button type="button" class="btn btn-xs btn-secondary">Par mois</button>
                             </div>
                         </div>
 
-                        <h4 class="header-title mb-3">Sales Analytics</h4>
+                        <h4 class="header-title mb-3">Rapport des paiments</h4>
 
                         <div dir="ltr">
                             <div id="sales-analytics" class="mt-4" data-colors="#1abc9c,#4a81d4" style="min-height: 393px;">
@@ -184,15 +184,15 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Edit Report</a>
+                                <a href="javascript:void(0);" class="dropdown-item">Modifier Report</a>
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                                <a href="javascript:void(0);" class="dropdown-item">Exporter Report</a>
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">Action</a>
                             </div>
                         </div>
 
-                        <h4 class="header-title mb-3">Top 5 Users Balances</h4>
+                        <h4 class="header-title mb-3">Top 5 Utilisateurs actifs</h4>
 
                         <div class="table-responsive">
                             <table class="table table-borderless table-hover table-nowrap table-centered m-0">
@@ -200,9 +200,9 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th colspan="2">Profile</th>
-                                        <th>Currency</th>
-                                        <th>Balance</th>
-                                        <th>Reserved in orders</th>
+                                        <th>Role</th>
+                                        <th>Etat</th>
+                                        <th>Paiements</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -213,20 +213,20 @@
                                         </td>
 
                                         <td>
-                                            <h5 class="m-0 fw-normal">Tomaslau</h5>
-                                            <p class="mb-0 text-muted"><small>Member Since 2017</small></p>
+                                            <h5 class="m-0 fw-normal">Lorem ipsom</h5>
+                                            <p class="mb-0 text-muted"><small>Mombre depuis 2017</small></p>
                                         </td>
 
                                         <td>
-                                            <i class="mdi mdi-currency-btc text-primary"></i> BTC
+                                             Avocat
                                         </td>
 
                                         <td>
-                                            0.00816117 BTC
+                                            Actif
                                         </td>
 
                                         <td>
-                                            0.00097036 BTC
+                                        145789 DA
                                         </td>
 
                                         <td>
@@ -237,51 +237,24 @@
 
                                     <tr>
                                         <td style="width: 36px;">
-                                            <img src="{{ asset('/assets/admin/assets/images/users/user-3.jpg')}}" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                            <img src="{{ asset('/assets/admin/assets/images/users/user-2.jpg')}}" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                         </td>
 
                                         <td>
-                                            <h5 class="m-0 fw-normal">Erwin E. Brown</h5>
-                                            <p class="mb-0 text-muted"><small>Member Since 2017</small></p>
+                                            <h5 class="m-0 fw-normal">Lorem ipsom</h5>
+                                            <p class="mb-0 text-muted"><small>Mombre depuis 2017</small></p>
                                         </td>
 
                                         <td>
-                                            <i class="mdi mdi-currency-eth text-primary"></i> ETH
+                                             Avocat
                                         </td>
 
                                         <td>
-                                            3.16117008 ETH
+                                            Actif
                                         </td>
 
                                         <td>
-                                            1.70360009 ETH
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-plus"></i></a>
-                                            <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i class="mdi mdi-minus"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 36px;">
-                                            <img src="{{ asset('/assets/admin/assets/images/users/user-4.jpg')}}" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
-                                        </td>
-
-                                        <td>
-                                            <h5 class="m-0 fw-normal">Margeret V. Ligon</h5>
-                                            <p class="mb-0 text-muted"><small>Member Since 2017</small></p>
-                                        </td>
-
-                                        <td>
-                                            <i class="mdi mdi-currency-eur text-primary"></i> EUR
-                                        </td>
-
-                                        <td>
-                                            25.08 EUR
-                                        </td>
-
-                                        <td>
-                                            12.58 EUR
+                                        145789 DA
                                         </td>
 
                                         <td>
@@ -291,24 +264,24 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 36px;">
-                                            <img src="{{ asset('/assets/admin/assets/images/users/user-5.jpg')}}" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                            <img src="{{ asset('/assets/admin/assets/images/users/user-2.jpg')}}" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                         </td>
 
                                         <td>
-                                            <h5 class="m-0 fw-normal">Jose D. Delacruz</h5>
-                                            <p class="mb-0 text-muted"><small>Member Since 2017</small></p>
+                                            <h5 class="m-0 fw-normal">Lorem ipsom</h5>
+                                            <p class="mb-0 text-muted"><small>Mombre depuis 2017</small></p>
                                         </td>
 
                                         <td>
-                                            <i class="mdi mdi-currency-cny text-primary"></i> CNY
+                                             Avocat
                                         </td>
 
                                         <td>
-                                            82.00 CNY
+                                            Actif
                                         </td>
 
                                         <td>
-                                            30.83 CNY
+                                        145789 DA
                                         </td>
 
                                         <td>
@@ -318,24 +291,24 @@
                                     </tr>
                                     <tr>
                                         <td style="width: 36px;">
-                                            <img src="{{ asset('/assets/admin/assets/images/users/user-6.jpg')}}" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                            <img src="{{ asset('/assets/admin/assets/images/users/user-2.jpg')}}" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                         </td>
 
                                         <td>
-                                            <h5 class="m-0 fw-normal">Luke J. Sain</h5>
-                                            <p class="mb-0 text-muted"><small>Member Since 2017</small></p>
+                                            <h5 class="m-0 fw-normal">Lorem ipsom</h5>
+                                            <p class="mb-0 text-muted"><small>Mombre depuis 2017</small></p>
                                         </td>
 
                                         <td>
-                                            <i class="mdi mdi-currency-btc text-primary"></i> BTC
+                                             Avocat
                                         </td>
 
                                         <td>
-                                            2.00816117 BTC
+                                            Actif
                                         </td>
 
                                         <td>
-                                            1.00097036 BTC
+                                        145789 DA
                                         </td>
 
                                         <td>
@@ -343,7 +316,33 @@
                                             <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i class="mdi mdi-minus"></i></a>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td style="width: 36px;">
+                                            <img src="{{ asset('/assets/admin/assets/images/users/user-2.jpg')}}" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                        </td>
 
+                                        <td>
+                                            <h5 class="m-0 fw-normal">Lorem ipsom</h5>
+                                            <p class="mb-0 text-muted"><small>Mombre depuis 2017</small></p>
+                                        </td>
+
+                                        <td>
+                                             Avocat
+                                        </td>
+
+                                        <td>
+                                            Actif
+                                        </td>
+
+                                        <td>
+                                        145789 DA
+                                        </td>
+
+                                        <td>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-plus"></i></a>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-danger"><i class="mdi mdi-minus"></i></a>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -368,16 +367,16 @@
                             </div>
                         </div>
 
-                        <h4 class="header-title mb-3">Revenue History</h4>
+                        <h4 class="header-title mb-3">Historique des paiements</h4>
 
                         <div class="table-responsive">
                             <table class="table table-borderless table-nowrap table-hover table-centered m-0">
 
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Marketplaces</th>
+                                        <th>Préstations</th>
                                         <th>Date</th>
-                                        <th>Payouts</th>
+                                        <th>Paiement</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -385,41 +384,19 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <h5 class="m-0 fw-normal">Themes Market</h5>
+                                            <h5 class="m-0 fw-normal">Agrément & carte</h5>
                                         </td>
 
                                         <td>
-                                            Oct 15, 2018
+                                            15/10/2024
                                         </td>
 
                                         <td>
-                                            $5848.68
+                                           6000 DA
                                         </td>
 
                                         <td>
-                                            <span class="badge bg-soft-warning text-warning">Upcoming</span>
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-pencil"></i></a>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <h5 class="m-0 fw-normal">Freelance</h5>
-                                        </td>
-
-                                        <td>
-                                            Oct 12, 2018
-                                        </td>
-
-                                        <td>
-                                            $1247.25
-                                        </td>
-
-                                        <td>
-                                            <span class="badge bg-soft-success text-success">Paid</span>
+                                            <span class="badge bg-soft-warning text-warning">Encours</span>
                                         </td>
 
                                         <td>
@@ -429,41 +406,19 @@
 
                                     <tr>
                                         <td>
-                                            <h5 class="m-0 fw-normal">Share Holding</h5>
+                                            <h5 class="m-0 fw-normal">Visa</h5>
                                         </td>
 
                                         <td>
-                                            Oct 10, 2018
+                                           01/10/2024
                                         </td>
 
                                         <td>
-                                            $815.89
+                                            3000 DA
                                         </td>
 
                                         <td>
-                                            <span class="badge bg-soft-success text-success">Paid</span>
-                                        </td>
-
-                                        <td>
-                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-pencil"></i></a>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <h5 class="m-0 fw-normal">Envato's Affiliates</h5>
-                                        </td>
-
-                                        <td>
-                                            Oct 03, 2018
-                                        </td>
-
-                                        <td>
-                                            $248.75
-                                        </td>
-
-                                        <td>
-                                            <span class="badge bg-soft-danger text-danger">Overdue</span>
+                                            <span class="badge bg-soft-success text-success">Payé</span>
                                         </td>
 
                                         <td>
@@ -473,19 +428,19 @@
 
                                     <tr>
                                         <td>
-                                            <h5 class="m-0 fw-normal">Marketing Revenue</h5>
+                                            <h5 class="m-0 fw-normal">Carte</h5>
                                         </td>
 
                                         <td>
-                                            Sep 21, 2018
+                                            01/09/2024
                                         </td>
 
                                         <td>
-                                            $978.21
+                                           4000 DA
                                         </td>
 
                                         <td>
-                                            <span class="badge bg-soft-warning text-warning">Upcoming</span>
+                                            <span class="badge bg-soft-success text-success">Payé</span>
                                         </td>
 
                                         <td>
@@ -495,19 +450,63 @@
 
                                     <tr>
                                         <td>
-                                            <h5 class="m-0 fw-normal">Advertise Revenue</h5>
+                                            <h5 class="m-0 fw-normal">Visa</h5>
                                         </td>
 
                                         <td>
-                                            Sep 15, 2018
+                                           10/09/2023
                                         </td>
 
                                         <td>
-                                            $358.10
+                                            4000 DA
                                         </td>
 
                                         <td>
-                                            <span class="badge bg-soft-success text-success">Paid</span>
+                                            <span class="badge bg-soft-danger text-danger">Refusé</span>
+                                        </td>
+
+                                        <td>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-pencil"></i></a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h5 class="m-0 fw-normal">Stage</h5>
+                                        </td>
+
+                                        <td>
+                                            07/07/2023
+                                        </td>
+
+                                        <td>
+                                           15000 DA
+                                        </td>
+
+                                        <td>
+                                            <span class="badge bg-soft-warning text-warning">Encours</span>
+                                        </td>
+
+                                        <td>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-pencil"></i></a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h5 class="m-0 fw-normal">Formations</h5>
+                                        </td>
+
+                                        <td>
+                                           10/11/2024
+                                        </td>
+
+                                        <td>
+                                           5000 DA
+                                        </td>
+
+                                        <td>
+                                            <span class="badge bg-soft-success text-success">Payé</span>
                                         </td>
 
                                         <td>

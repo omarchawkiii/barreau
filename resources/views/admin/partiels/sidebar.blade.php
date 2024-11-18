@@ -18,35 +18,35 @@
     <!-- menu-left -->
     <div class="scrollbar">
 
-        <!-- User box -->
+              <!-- User box -->
         <div class="user-box text-center">
             <img src="{{ asset('/assets/admin/assets/images/users/user-1')}}.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md">
             <div class="dropdown">
-                <a href="javascript: void(0);" class="dropdown-toggle h5 mb-1 d-block" data-bs-toggle="dropdown">Geneva Kennedy</a>
+                <a href="javascript: void(0);" class="dropdown-toggle h5 mb-1 d-block" data-bs-toggle="dropdown">Admin</a>
                 <div class="dropdown-menu user-pro-dropdown">
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-user me-1"></i>
-                        <span>My Account</span>
+                        <span>Mon profil</span>
                     </a>
 
-                    <!-- item-->
+                    <!--
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-settings me-1"></i>
                         <span>Settings</span>
                     </a>
 
-                    <!-- item-->
+                   
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-lock me-1"></i>
                         <span>Lock Screen</span>
-                    </a>
+                    </a>-->
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-log-out me-1"></i>
-                        <span>Logout</span>
+                        <span>Deconnexion</span>
                     </a>
 
                 </div>
@@ -64,7 +64,7 @@
                     <span class="menu-text"> Tableau de bord </span>
                 </a>
             </li>
-            <li class="menu-item">
+            <!--<li class="menu-item">
                 <a href="{{ route('admin.datatable') }}" class="menu-link">
                     <span class="menu-icon"><i class="mdi mdi-table-large"></i></span>
                     <span class="menu-text"> Data Table  </span>
@@ -76,11 +76,14 @@
                     <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
                     <span class="menu-text"> Blank Page  </span>
                 </a>
+            </li>-->
+             <li class="menu-item">
+                <a href="{{ route('admin.lawyers') }}" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
+                    <span class="menu-text"> Tableau </span>
+                </a>
             </li>
-            @can('Manage News')
-
-            @endcan
-            @role('SuperAdmin')
+             @role('SuperAdmin')
             <li class="menu-item">
                 <a href="#menunews" data-bs-toggle="collapse" class="menu-link">
                     <span class="menu-icon"><i class="mdi mdi-newspaper"></i></span>
@@ -150,7 +153,91 @@
                 </div>
             </li>
             @endrole
+                   <li class="menu-item">
+                <a href="#menuuser" data-bs-toggle="collapse" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-receipt"></i></span>
+                    <span class="menu-text"> Scrutins & sondages   </span>
+                    <span class="mdi mdi-dots-vertical"></span>
+                </a>
+                <div class="collapse" id="menuuser">
+                    <ul class="sub-menu">
+                           <li class="menu-item">
+                            <a href="{{ route('scrutins.index') }}" class="menu-link">
+                                <span class="menu-text"> Scrutins & sondages  </span>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="{{ route('scrutins.create') }}" class="menu-link">
+                                <span class="menu-text">Ajouter vote  </span>
+                            </a>
+                        </li>
+                    
 
+                    </ul>
+                </div>
+            </li>
+
+   
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
+                    <span class="menu-text"> Inscription en attentes  </span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
+                    <span class="menu-text"> Demandes  </span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
+                    <span class="menu-text"> Stagiaires  </span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
+                    <span class="menu-text"> Plaintes  </span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
+                    <span class="menu-text"> Recours  </span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
+                    <span class="menu-text"> Formations </span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
+                    <span class="menu-text"> Assistance judiciaire </span>
+                </a>
+            </li>
+     
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
+                    <span class="menu-text"> Comptabilités  </span>
+                </a>
+            </li>
+            <!--<li class="menu-item">
+                <a href="#" class="menu-link">
+                    <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
+                    <span class="menu-text"> Réglages  </span>
+                </a>
+            </li>-->
+        
+            @can('Manage News')
+
+            @endcan
+           
 
 
             <!--

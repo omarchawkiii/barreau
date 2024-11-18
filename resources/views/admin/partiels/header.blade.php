@@ -57,30 +57,22 @@
 
             <!-- Language flag dropdown  -->
             <li class="dropdown d-none d-md-inline-block">
-                <a class="nav-link dropdown-toggle waves-effect waves-light arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ asset('/assets/admin/assets/images/flags/us.jpg')}}" alt="user-image" class="me-0 me-sm-1" height="18">
+                <a style="color:#fff !important;" class="nav-link dropdown-toggle waves-effect waves-light arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <!--<img src="{{ asset('/assets/admin/assets/images/flags/us.jpg')}}" alt="user-image" class="me-0 me-sm-1" height="18">-->FR
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('/assets/admin/assets/images/flags/germany.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                       AR <!--<img src="{{ asset('/assets/admin/assets/images/flags/germany.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>-->
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('/assets/admin/assets/images/flags/italy.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                      EN <!-- <img src="{{ asset('/assets/admin/assets/images/flags/italy.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>-->
                     </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('/assets/admin/assets/images/flags/spain.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('/assets/admin/assets/images/flags/russia.jpg')}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
-                    </a>
+                
 
                 </div>
             </li>
@@ -95,11 +87,11 @@
                     <div class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="m-0 font-16 fw-semibold"> Notification</h6>
+                                <h6 class="m-0 font-16 fw-semibold"> Notifications</h6>
                             </div>
                             <div class="col-auto">
                                 <a href="javascript: void(0);" class="text-dark text-decoration-underline">
-                                    <small>Clear All</small>
+                                    <small>Tout supprimer</small>
                                 </a>
                             </div>
                         </div>
@@ -107,7 +99,7 @@
 
                     <div class="px-1" style="max-height: 300px;" data-simplebar>
 
-                        <h5 class="text-muted font-13 fw-normal mt-2">Today</h5>
+                        <h5 class="text-muted font-13 fw-normal mt-2">Aujourd'hui</h5>
                         <!-- item-->
 
                         <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-1">
@@ -120,8 +112,8 @@
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 text-truncate ms-2">
-                                        <h5 class="noti-item-title fw-semibold font-14">Datacorp <small class="fw-normal text-muted ms-1">1 min ago</small></h5>
-                                        <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on Admin</small>
+                                        <h5 class="noti-item-title fw-semibold font-14">Agréments <small class="fw-normal text-muted ms-1">il y a 5 h</small></h5>
+                                        <small class="noti-item-subtitle text-muted">Nouvelle demande</small>
                                     </div>
                                 </div>
                             </div>
@@ -138,14 +130,14 @@
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 text-truncate ms-2">
-                                        <h5 class="noti-item-title fw-semibold font-14">Admin <small class="fw-normal text-muted ms-1">1 hours ago</small></h5>
-                                        <small class="noti-item-subtitle text-muted">New user registered</small>
+                                        <h5 class="noti-item-title fw-semibold font-14">Tableau <small class="fw-normal text-muted ms-1">il y a 8 h</small></h5>
+                                        <small class="noti-item-subtitle text-muted">Nouveau avocat s'est inscrit</small>
                                     </div>
                                 </div>
                             </div>
                         </a>
 
-                        <h5 class="text-muted font-13 fw-normal mt-0">Yesterday</h5>
+                        <h5 class="text-muted font-13 fw-normal mt-0">Hier</h5>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-1">
@@ -158,14 +150,14 @@
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 text-truncate ms-2">
-                                        <h5 class="noti-item-title fw-semibold font-14">Cristina Pride <small class="fw-normal text-muted ms-1">1 day ago</small></h5>
-                                        <small class="noti-item-subtitle text-muted">Hi, How are you? What about our next meeting</small>
+                                        <h5 class="noti-item-title fw-semibold font-14">Formations <small class="fw-normal text-muted ms-1">Il y a un jour</small></h5>
+                                        <small class="noti-item-subtitle text-muted">nouvelle inscription à la formation de droit</small>
                                     </div>
                                 </div>
                             </div>
                         </a>
 
-                        <h5 class="text-muted font-13 fw-normal mt-0">30 Dec 2021</h5>
+                        <h5 class="text-muted font-13 fw-normal mt-0">30 Oct 2024</h5>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-1">
@@ -178,8 +170,8 @@
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 text-truncate ms-2">
-                                        <h5 class="noti-item-title fw-semibold font-14">Datacorp</h5>
-                                        <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on Admin</small>
+                                        <h5 class="noti-item-title fw-semibold font-14">Agréments</h5>
+                                        <small class="noti-item-subtitle text-muted">Nouvelle demande visa</small>
                                     </div>
                                 </div>
                             </div>
@@ -196,8 +188,8 @@
                                         </div>
                                     </div>
                                     <div class="flex-grow-1 text-truncate ms-2">
-                                        <h5 class="noti-item-title fw-semibold font-14">Karen Robinson</h5>
-                                        <small class="noti-item-subtitle text-muted">Wow ! this admin looks good and awesome design</small>
+                                        <h5 class="noti-item-title fw-semibold font-14">Avocats</h5>
+                                        <small class="noti-item-subtitle text-muted">Demande de transfert</small>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +202,7 @@
 
                     <!-- All-->
                     <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
-                        View All
+                        Voir tout
                     </a>
 
                 </div>
@@ -226,42 +218,36 @@
             <!-- User Dropdown -->
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ asset('/assets/admin/assets/images/users/user-1')}}.jpg" alt="user-image" class="rounded-circle">
+                    <img src="{{ asset('/assets/admin/assets/images/users/user-5')}}.jpg" alt="user-image" class="rounded-circle">
                     <span class="ms-1 d-none d-md-inline-block">
-                        {{Auth::user()->name}} 
+                        Admin <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
-                   
+                    <!-- item-->
+                    <!--<div class="dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">Welcome !</h6>
+                    </div>-->
+
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-user"></i>
-                        <span>My Account</span>
+                        <span>Mon profil</span>
                     </a>
 
-                    <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings"></i>
-                        <span>Settings</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-lock"></i>
-                        <span>Lock Screen</span>
+                        <i class="fe-user"></i>
+                        <span>Voir le site</span>
                     </a>
 
                     <div class="dropdown-divider"></div>
 
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-log-out"></i>
+                        <span>Déconnecter</span>
+                    </a>
 
-                        <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </x-dropdown-link>
-                    </form>
                 </div>
             </li>
 

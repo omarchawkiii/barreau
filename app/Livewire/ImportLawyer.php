@@ -149,6 +149,8 @@ class ImportLawyer extends Component
 
             $this->resetForm();
             $this->dispatch('close-modal');
+            $this->dispatch('refreshDatatable');
+
 
         } catch (\Exception $e) {
             session()->flash('status', 'error');
@@ -232,7 +234,7 @@ class ImportLawyer extends Component
 
             $this->resetForm();
             $this->dispatch('close-modal');
-
+            $this->dispatch('refreshDatatable');
         } catch (\Exception $e) {
             session()->flash('status', 'error');
             session()->flash('message', 'Une erreur est survenue lors de la mise à jour de l\'événement.');
@@ -258,6 +260,8 @@ class ImportLawyer extends Component
                 icon : 'success',
                 iconColor : '#3085d6',
             );
+
+            $this->dispatch('refreshDatatable');
 
         } catch (\Exception $e) {
 
@@ -345,9 +349,8 @@ class ImportLawyer extends Component
                 }
             }
 
-                DB::commit();
-
-
+            DB::commit();
+            $this->dispatch('refreshDatatable');
             session()->flash('message', 'Le fichier a été importé avec succès.');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -364,8 +367,6 @@ class ImportLawyer extends Component
 
             $this->resetForm();
             $this->dispatch('close-modal');
-
-
         }
     }
     public function render()

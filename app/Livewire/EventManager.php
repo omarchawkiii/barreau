@@ -64,6 +64,8 @@ class EventManager extends Component
 
             $this->resetForm();
             $this->dispatch('close-modal');
+            $this->dispatch('refreshDatatable');
+
 
         } catch (\Exception $e) {
             session()->flash('status', 'error');
@@ -95,9 +97,6 @@ class EventManager extends Component
 
         try {
             $event = Event::findOrFail($this->eventId);
-
-
-
             if ($this->thumbnail instanceof \Illuminate\Http\UploadedFile) {
                 // Delete the old image if it exists
                 if ($event->thumbnail) {
@@ -108,12 +107,9 @@ class EventManager extends Component
             }
 
 
-            if($this->slug != null)
-            {
+            if($this->slug != null){
                 $slug = $this->generateUniqueSlug($this->slug,$this->eventId) ;
-            }
-            else
-            {
+            } else {
                 $slug = $this->generateUniqueSlug($this->title,$this->eventId) ;
             }
 
@@ -136,7 +132,7 @@ class EventManager extends Component
 
             $this->resetForm();
             $this->dispatch('close-modal');
-
+            $this->dispatch('refreshDatatable');
         } catch (\Exception $e) {
             session()->flash('status', 'error');
             session()->flash('message', 'Une erreur est survenue lors de la mise à jour de l\'événement.');
@@ -168,7 +164,7 @@ class EventManager extends Component
                 icon : 'success',
                 iconColor : '#3085d6',
             );
-
+            $this->dispatch('refreshDatatable');
         } catch (\Exception $e) {
             session()->flash('status', 'error');
             session()->flash('message', 'Une erreur est survenue lors de la suppression de l\'événement.');

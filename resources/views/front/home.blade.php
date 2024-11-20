@@ -48,6 +48,13 @@
                         <button type="submit" class="default-btn rounded">Se connecter</button>
                     </div>
                 </div>
+                 @if ($errors->any())
+                    <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                    </div>
+                @endif
                 
               </form>
               <p class="create-account mt-3">

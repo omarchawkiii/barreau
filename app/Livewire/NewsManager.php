@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\Catnews;
+use App\Models\CatNews;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\News;
@@ -53,7 +53,7 @@ class NewsManager extends Component
                 'user_id' => null
             ]);
 
-            
+
             $this->dispatch('swal',
                 title : 'Création réussie',
                 text : 'L\'événement a été créé avec succès !',

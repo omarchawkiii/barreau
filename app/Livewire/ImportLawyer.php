@@ -220,8 +220,8 @@ class ImportLawyer extends Component
     public function update()
     {
         $validated_data = $this->validate((new LawyerStoreRequest())->rules());
-        
-        
+
+
         try {
             $lawyer = Lawyer::findOrFail($this->lawyer_id);
             $lawyer->update($validated_data);
@@ -280,13 +280,13 @@ class ImportLawyer extends Component
     }
     public function upload_lawyer()
     {
-        $this->rules = $this->rulesForUpload;
+        //$this->rules = $this->rulesForUpload;
         $this->validate(['excelFile' => 'required|file']);
         try
         {
             $this->loading = true;
             $lawyerRole = Role::firstOrCreate(['name' => 'Lawyer']);
-            
+
             $data = Excel::toArray(new ImportLawyer, $this->excelFile->getRealPath());
             DB::beginTransaction();
             foreach ($data[0] as $row) {

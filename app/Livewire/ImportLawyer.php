@@ -13,6 +13,7 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
+use Spatie\Permission\Models\Role;
 
 use function Laravel\Prompts\error;
 
@@ -139,6 +140,8 @@ class ImportLawyer extends Component
             ]);
 
             Lawyer::create(array_merge($validated_data, ['user_id'=>$user->id]));
+            $lawyerRole = Role::firstOrCreate(['name' => 'Lawyer']);
+            $user->assignRole($lawyerRole);
 
             $this->dispatch('swal',
                 title : 'Création réussie',
@@ -282,11 +285,11 @@ class ImportLawyer extends Component
         try
         {
             $this->loading = true;
-
-                $data = Excel::toArray(new ImportLawyer, $this->excelFile->getRealPath());
-                DB::beginTransaction();
-                foreach ($data[0] as $row) {
-
+            $lawyerRole = Role::firstOrCreate(['name' => 'Lawyer']);
+            
+            $data = Excel::toArray(new ImportLawyer, $this->excelFile->getRealPath());
+            DB::beginTransaction();
+            foreach ($data[0] as $row) {
                 if($row[38])
                 {
 
@@ -297,6 +300,8 @@ class ImportLawyer extends Component
                         'name' => $row[5] . ' ' . $row[6],
                         'password' => Hash::make('password') // Générer un mot de passe temporaire
                     ]);
+
+                    $user->assignRole($lawyerRole);
 
                     // Créer l'avocat
                     Lawyer::updateOrCreate(

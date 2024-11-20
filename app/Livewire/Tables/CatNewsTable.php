@@ -3,6 +3,7 @@
 namespace App\Livewire\Tables;
 
 use App\Models\CatNews;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Columns\LinkColumn;
@@ -24,10 +25,17 @@ class CatNewsTable extends DataTableComponent
             ->setUseHeaderAsFooterEnabled();
     }
 
-    public function query()
+    public function builder(): Builder
     {
-        return CatNews::withCount('news');
+        info(CatNews::query()->withCount('news')->get());
+        return CatNews::query()
+            ->withCount('news')
+            ->select(); // Select some things
     }
+    // public function query()
+    // {
+    //     return CatNews::withCount('news');
+    // }
 
     public function columns(): array
     {
@@ -39,7 +47,8 @@ class CatNewsTable extends DataTableComponent
                 ->searchable(),
             Column::make('Slug', 'slug')
                 ->deselected(),
-            // Column::make("Nombre des news","news_count"),
+            Column::make("Nombre des news")
+                ->label(fn ($row, Column $column) => $row->news()->count()),
         
             ButtonGroupColumn::make('Actions')
                 ->unclickable()

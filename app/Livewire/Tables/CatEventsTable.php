@@ -30,10 +30,6 @@ class CatEventsTable extends DataTableComponent
             ->setUseHeaderAsFooterEnabled();
     }
 
-    public function query()
-    {
-        return CatEvent::withCount('events');
-    }
 
     public function columns(): array
     {
@@ -45,7 +41,8 @@ class CatEventsTable extends DataTableComponent
                 ->searchable(),
             Column::make('Slug', 'slug')
                 ->deselected(),
-            Column::make("Nombre d'événements","events_count"),
+            Column::make("Nombre d'événements")
+                ->label(fn ($row, Column $column) => $row->events()->count()),
         
             
             ButtonGroupColumn::make('Actions')

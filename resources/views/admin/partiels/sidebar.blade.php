@@ -3,13 +3,13 @@
     <!-- Brand Logo -->
     <div class="logo-box">
         <!-- Brand Logo Light -->
-        <a href="index.html" class="logo-light">
+        <a href="/admin/home" class="logo-light">
             <img src="{{ asset('/assets/admin/assets/images/logo-light.png')}}" alt="logo" class="logo-lg">
             <img src="{{ asset('/assets/admin/assets/images/logo-sm.png')}}" alt="small logo" class="logo-sm">
         </a>
 
         <!-- Brand Logo Dark -->
-        <a href="index.html" class="logo-dark">
+        <a href="/admin/home" class="logo-dark">
             <img src="{{ asset('/assets/admin/assets/images/logo-dark.png')}}" alt="dark logo" class="logo-lg">
             <img src="{{ asset('/assets/admin/assets/images/logo-sm.png')}}" alt="small logo" class="logo-sm">
         </a>
@@ -37,7 +37,7 @@
                         <span>Settings</span>
                     </a>
 
-                   
+
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <i class="fe-lock me-1"></i>
                         <span>Lock Screen</span>
@@ -171,13 +171,13 @@
                                 <span class="menu-text">Ajouter vote  </span>
                             </a>
                         </li>
-                    
+
 
                     </ul>
                 </div>
             </li>
 
-   
+
             <li class="menu-item">
                 <a href="#" class="menu-link">
                     <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
@@ -220,7 +220,7 @@
                     <span class="menu-text"> Assistance judiciaire </span>
                 </a>
             </li>
-     
+
             <li class="menu-item">
                 <a href="#" class="menu-link">
                     <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
@@ -233,11 +233,11 @@
                     <span class="menu-text"> Réglages  </span>
                 </a>
             </li>-->
-        
+
             @can('Manage News')
 
             @endcan
-           
+
 
 
             <!--

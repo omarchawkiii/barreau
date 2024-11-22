@@ -60,6 +60,15 @@ class EventsTable extends DataTableComponent
             ButtonGroupColumn::make('Actions')
                 ->unclickable()
                 ->buttons([
+                    LinkColumn::make('view')
+                        ->title(fn($row) => '<i class="mdi mdi-eye text-success"></i>')->html()
+                        ->location(fn($row) => 'javascript:void(0);')
+                        ->attributes(function ($row) {
+                            return [
+                                'class' => 'action-icon',
+                                'onclick' => "view($row->id)",
+                            ];
+                        }),
                     LinkColumn::make('modifier')
                         ->title(fn($row) => '<i class="mdi mdi-square-edit-outline text-warning"></i>')->html()
                         ->location(fn($row) => 'javascript:void(0);')

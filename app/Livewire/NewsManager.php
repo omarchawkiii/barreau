@@ -16,6 +16,8 @@ class NewsManager extends Component
     public $title, $slug, $content, $thumbnail, $cat_news_id;
     public $isEditing = false;
     public $newsId;
+    public ?News $news = null;
+
 
     protected function rules()
     {
@@ -87,6 +89,14 @@ class NewsManager extends Component
         $this->thumbnail = $news->thumbnail;
         $this->cat_news_id = $news->cat_news_id;
         $this->isEditing = true;
+        $this->dispatch('edit', news_data : $news);
+
+    }
+
+    public function view($id)
+    {
+        $news = News::findOrFail($id);
+        $this->news = $news;
     }
 
     public function update()

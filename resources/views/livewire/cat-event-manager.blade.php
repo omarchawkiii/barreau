@@ -33,9 +33,11 @@
             </div>
         </div>
     </div>
+
+
     <!-- Modal pour le formulaire -->
     <div class="modal fade" id="categoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true" wire:ignore.self>
-        <div class="modal-dialog">
+        <div class="modal-dialog  modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="categoryModalLabel">{{ $isEditing ? 'Modifier la Catégorie' : 'Ajouter une Catégorie' }}</h5>
@@ -68,6 +70,34 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="categoryModalLabel"> Détails de la catégorie</h5>
+                    <button type="button" class="btn-close"  aria-label="Close" data-bs-dismiss="modal" wire:click="resetForm" ></button>
+                </div>
+
+                <div class="modal-body">
+
+                        <div class="row">
+                            <label class="col">Nom : </label>
+                            <lable class="col">{{ $title }}</lable>
+                        </div>
+                        <div class="row">
+                            <label class="col">Slug : </label>
+                            <lable class="col">{{ $title }}</lable>
+                        </div>
+                       
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- SweetAlert pour la confirmation de suppression -->
@@ -95,7 +125,10 @@
     function edit(id) {
         $('#categoryModal').modal('show');
         @this.call('edit', id);
-
+    }
+    function view(id) {
+        $('#viewModal').modal('show');
+        @this.call('edit', id);
     }
 </script>
 

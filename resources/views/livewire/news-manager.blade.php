@@ -39,7 +39,7 @@
                     <h5 class="modal-title">{{ $isEditing ? 'Modifier l\'événement' : 'Ajouter un événement' }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form wire:submit.prevent="{{ $isEditing ? 'update' : 'add' }}">
+                <form wire:submit.prevent="{{ $isEditing ? 'update' : 'add' }}" id="news-form">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="title">Titre</label>
@@ -47,12 +47,14 @@
                             @error('title') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="form-group mt-3">
+                        <div class="form-group mt-3" wire:ignore>
                             <label for="content">Contenu</label>
-                            <textarea id="wysiwyg" class="form-control" wire:model.defer="content"></textarea>
+                            <textarea id="wysiwyg" class="form-control"></textarea>
                             @error('content') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
+                        <textarea id="hidden-content" type="hidden" style="display:none" wire:model="content"></textarea>
+                        
                         <div class="form-group mt-3">
                             <label for="thumbnail">Thumbnail</label>
                             <input type="file" id="thumbnail" class="form-control" wire:model="thumbnail">
@@ -79,6 +81,43 @@
             </div>
         </div>
     </div>
+
+     {{-- modal view --}}
+     <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true" wire:ignore.self>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Détails de l\'événement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title">Titre</label>
+                        <p>{{ $news?->title }}</p>
+                    </div>
+                    <hr>
+                    <div class="form-group mt-3">
+                        <label for="content">Contenu</label>
+                        {!! $news?->content !!}
+                    </div>
+                    <hr>
+                    <div class="form-group mt-3">
+                        <label for="thumbnail">Thumbnail</label><br>
+                        <img src="{{ $news?->thumbnail_url }}" alt="{{$title}}" class="avatar-xl">
+                    </div>
+                    <hr>
+                    <div class="form-group mt-3">
+                        <label for="cat_news_id">Catégorie</label>
+                        <p>{{ $news?->catNews->title }}</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <script>
     function confirmDeletion(id) {
@@ -104,10 +143,15 @@
         $('#newsModal').modal('show');
         @this.call('edit', id);
     }
+    function view(id) {
+        $('#viewModal').modal('show');
+        @this.call('view', id);
+    }
 </script>
 <script>
     window.addEventListener('close-modal', event => {
         $('#newsModal').modal('hide');
+        $('#viewModal').modal('hide');
     });
 </script>
 
@@ -131,21 +175,45 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.umd.js"></script>
 
 <script>
-    const {
-        ClassicEditor,
-        Essentials,
-        Bold,
-        Italic,
-        Font,
-        Paragraph
-    } = CKEDITOR;
+    function initializeScript() {
+        const {
+            ClassicEditor,
+            Essentials,
+            Bold,
+            Italic,
+            Font,
+            Paragraph
+        } = CKEDITOR;
 
-    ClassicEditor
-        .create( document.querySelector( '#wysiwyg' ), {
-            plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
-            toolbar: [
-                'undo', 'redo', '|', 'bold', 'italic', '|',
-                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
-            ]
-        } )
+        ClassicEditor
+            .create( document.querySelector( '#wysiwyg' ), {
+                plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
+                toolbar: [
+                    'undo', 'redo', '|', 'bold', 'italic', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+                ]
+            }).then(editor => {
+
+                const form = document.getElementById('news-form');
+                form.addEventListener('submit', () => {
+                    document.getElementById('hidden-content').value = editor.getData();
+                    @this.set('content', editor.getData());
+                });
+
+                document.addEventListener('edit', event => {
+                    console.log(event)
+                    console.log(event.detail.news_data)
+
+                    editor.setData(event.detail.news_data.content)
+                });
+
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+    }   
+
+    initializeScript();
+
 </script>

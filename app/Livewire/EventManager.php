@@ -16,6 +16,7 @@ class EventManager extends Component
     public $title, $slug, $content, $thumbnail, $cat_event_id;
     public $isEditing = false;
     public $eventId;
+    public ?Event $event = null;
 
     protected function rules()
     {
@@ -87,8 +88,18 @@ class EventManager extends Component
         $this->slug = $event->slug;
         $this->content = $event->content;
         $this->thumbnail = $event->thumbnail;
+        $this->thumbnail = $event->thumbnail;
         $this->cat_event_id = $event->cat_event_id;
         $this->isEditing = true;
+
+        $this->dispatch('edit', event_data : $event);
+    }
+
+
+    public function view($id)
+    {
+        $event = Event::findOrFail($id);
+        $this->event = $event;
     }
 
     public function update()
@@ -113,6 +124,9 @@ class EventManager extends Component
                 $slug = $this->generateUniqueSlug($this->title,$this->eventId) ;
             }
 
+            info("mmmmmmmmmmmmmm");
+            info($this->content);
+            info("mmmmmmmmmmmmmm");
 
             $event->update([
                 'title' => $this->title,

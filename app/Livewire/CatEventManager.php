@@ -83,7 +83,6 @@ class CatEventManager extends Component
         $this->slug = $catEvents->slug;
         $this->catEventsId = $catEvents->id;
         $this->isEditing = true;
-
     }
 
     public function update()

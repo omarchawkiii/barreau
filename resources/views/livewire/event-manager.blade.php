@@ -23,39 +23,12 @@
         </div> <!-- end col-->
     </div>
 
-
     <div class="card">
         <div class="card-body">
-            <table id="data-listing" class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th> Image </th>
-                        <th>Title</th>
-                        <th>Slug</th>
-                        <th>Catégorie</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($events as $event)
-                        <tr>
-                            <td>{{ $event->id }}</td>
-                            <td><img src="{{  asset('storage/'.$event->thumbnail)  }}"  class=" avatar-xl"/> </td>
-                            <td>{{ $event->title }}</td>
-                            <td>{{ $event->slug }}</td>
-                            <td>{{ $event->catEvent->title }}</td>
-                            <td>
-                                <a href="javascript:void(0);" class="action-icon" onclick="edit_event({{ $event->id }})"> <i class="mdi mdi-square-edit-outline text-warning"></i></button>
-                                <a href="javascript:void(0);" class="action-icon" onclick="confirmDeletion({{ $event->id }})"> <i class="mdi mdi-delete text-danger" ></i></button>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <livewire:tables.events-table />
         </div>
     </div>
-
+  
     <!-- Modal Formulaire -->
     <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true" wire:ignore.self>
         <div class="modal-dialog">
@@ -72,20 +45,20 @@
                             @error('title') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label for="content">Contenu</label>
-                            <textarea id="content" class="form-control" wire:model.defer="content"></textarea>
+                            <textarea id="wysiwyg" class="form-control" ></textarea>
                             @error('content') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label for="thumbnail">Thumbnail</label>
                             <input type="file" id="thumbnail" class="form-control" wire:model="thumbnail">
                             @error('thumbnail') <span class="text-danger">{{ $message }}</span> @enderror
 
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label for="cat_event_id">Catégorie</label>
                             <select id="cat_event_id" class="form-control" wire:model.defer="cat_event_id">
                                 <option value="">Choisir une catégorie</option>
@@ -125,7 +98,7 @@
     }
 </script>
 <script>
-    function edit_event(id) {
+    function edit(id) {
         $('#eventModal').modal('show');
         @this.call('edit', id);
 
@@ -158,20 +131,24 @@
 </script>
 
 
-@section('custom_script')
-    <script>
-        $(document).ready(function() {
-            $("#data-listing").DataTable({
-                language: {
-                    paginate: {
-                        previous: "<i class='mdi mdi-chevron-left'>",
-                        next: "<i class='mdi mdi-chevron-right'>"
-                    }
-                },
-                drawCallback: function() {
-                    $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
-                }
-            });
-        });
-    </script>
-@endsection
+<script src="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.umd.js"></script>
+
+<script>
+    const {
+        ClassicEditor,
+        Essentials,
+        Bold,
+        Italic,
+        Font,
+        Paragraph
+    } = CKEDITOR;
+
+    ClassicEditor
+        .create( document.querySelector( '#wysiwyg' ), {
+            plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
+            toolbar: [
+                'undo', 'redo', '|', 'bold', 'italic', '|',
+                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+            ]
+        } )
+</script>

@@ -48,6 +48,13 @@
                         <button type="submit" class="default-btn rounded">Se connecter</button>
                     </div>
                 </div>
+                 @if ($errors->any())
+                    <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                    </div>
+                @endif
                 
               </form>
               <p class="create-account mt-3">
@@ -124,26 +131,29 @@
                 <div class="col-lg-4 ">
                     <div class="choose-us-content p-5 bg-barreau-primary rounded">
                         <div class="section-title">
-                            <h4 class="text-center"><i class="bx bx-calendar"></i> {{$event_category_annonces->title}}</h4>
+                            <h4 class="text-center"><i class="bx bx-calendar"></i> {{$event_category_annonces?->title}}</h4>
                             <p class="text-center text-dark">Restez au fait des développements importants! <br /> Ne manquez aucune mise a jour des annonces  </p>
                         </div>
-                        @foreach ($event_category_annonces->events as $event)
+                        @if ($event_category_annonces)
+                        @foreach ($event_category_annonces?->events as $event)
                         <div class="card bg-barreau-light mb-2">
                             <div class="row no-gutters p-2">
                                 <!-- Image à gauche -->
                                 <div class="col-md-4">
-                                    <img src="{{$event->thumbnail_url}}" class="card-img" alt="Image">
+                                    <img src="{{$event?->thumbnail_url}}" class="card-img" alt="Image">
                                 </div>
                                 <!-- Contenu à droite -->
                                 <div class="col-md-8 d-flex align-items-start flex-column">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{$event->title}}</h5>
+                                        <h5 class="card-title">{{$event?->title}}</h5>
                                         <a href="#" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         @endforeach
+                        @endif
+
                         
                 
                         <div class=" text-center">
@@ -156,26 +166,28 @@
                 <div class="col-lg-4 ">
                     <div class="choose-us-content p-5 bg-barreau-primary rounded">
                         <div class="section-title">
-                            <h4 class="text-center"><i class="bx bx-calendar"></i> {{$event_category_deliberation->title}}</h4>
+                            <h4 class="text-center"><i class="bx bx-calendar"></i> {{$event_category_deliberation?->title}}</h4>
                             <p class="text-center text-dark">Restez au fait des développements importants! <br /> Ne manquez aucune mise a jour des annonces</p>
                         </div>
-                        @foreach ($event_category_deliberation->events as $event)
+                        @if ($event_category_deliberation)
+                        @foreach ($event_category_deliberation?->events as $event)
                         <div class="card bg-barreau-light mb-2">
                             <div class="row no-gutters p-2">
                                 <!-- Image à gauche -->
                                 <div class="col-md-4">
-                                    <img src="{{$event->thumbnail_url}}" class="card-img" alt="Image">
+                                    <img src="{{$event?->thumbnail_url}}" class="card-img" alt="Image">
                                 </div>
                                 <!-- Contenu à droite -->
                                 <div class="col-md-8 d-flex align-items-start flex-column">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{$event->title}}</h5>
+                                        <h5 class="card-title">{{$event?->title}}</h5>
                                         <a href="#" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         @endforeach
+                        @endif
                         
                         <div class=" text-center">
                             <a href="about-us.html" class="default-btn btn  btn-light-barreau ">
@@ -188,26 +200,29 @@
                 <div class="col-lg-4 ">
                     <div class="choose-us-content p-5 bg-barreau-primary rounded">
                         <div class="section-title">
-                            <h4 class="text-center"><i class="bx bx-calendar"></i> {{$event_category_memoires->title}}</h4>
+                            <h4 class="text-center"><i class="bx bx-calendar"></i> {{$event_category_memoires?->title}}</h4>
                             <p class="text-center text-dark">Restez au fait des développements importants! <br /> Ne manquez aucune mise a jour des annonces</p>
                         </div>
-                        @foreach ($event_category_deliberation->events as $event)
+
+                        @if ($event_category_memoires)
+                        @foreach ($event_category_memoires?->events as $event)
                         <div class="card bg-barreau-light mb-2">
                             <div class="row no-gutters p-2">
                                 <!-- Image à gauche -->
                                 <div class="col-md-4">
-                                    <img src="{{$event->thumbnail_url}}" class="card-img" alt="Image">
+                                    <img src="{{$event?->thumbnail_url}}" class="card-img" alt="Image">
                                 </div>
                                 <!-- Contenu à droite -->
                                 <div class="col-md-8 d-flex align-items-start flex-column">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{$event->title}}</h5>
+                                        <h5 class="card-title">{{$event?->title}}</h5>
                                         <a href="#" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         @endforeach
+                        @endif
                         <div class=" text-center">
                             <a href="about-us.html" class="default-btn btn  btn-light-barreau ">
                                 <span>Plus de nouvelle </span>
@@ -231,23 +246,25 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="section-title mb-4">
-                        <h4>{{$news_category_photos->title}}</h2>
+                        <h4>{{$news_category_photos?->title}}</h2>
                     </div>
                     <div class="row">
-                        @foreach ($news_category_photos->news as $news)
+                        @if ($news_category_photos)
+                        @foreach ($news_category_photos?->news as $news)
                         <div class="single-blog-post col-md-5">
                             <div class="post-image">
                                 <a href="blog-details.html">
-                                    <img src="{{$news->thumbnail_url}}" alt="image">
+                                    <img src="{{$news?->thumbnail_url}}" alt="image">
                                 </a>
                             </div>
                             <div class="blog-content">
                                 <h5>
-                                    <a href="blog-details.html">{{$news->title}}</a>
+                                    <a href="blog-details.html">{{$news?->title}}</a>
                                 </h5>
                             </div>
                         </div>
                         @endforeach
+                        @endif
                         
                     </div>
                     <div class=" text-center">
@@ -259,23 +276,25 @@
 
                 <div class="col-md-6">
                     <div class="section-title mb-4">
-                        <h4>{{$news_category_videos->title}}</h2>
+                        <h4>{{$news_category_videos?->title}}</h2>
                     </div>
                     <div class="row">
-                        @foreach ($news_category_videos->news as $news)
+                        @if ($news_category_videos)
+                        @foreach ($news_category_videos?->news as $news)
                         <div class="single-blog-post col-md-5">
                             <div class="post-image">
                                 <a href="blog-details.html">
-                                    <img src="{{$news->thumbnail_url}}" alt="image">
+                                    <img src="{{$news?->thumbnail_url}}" alt="image">
                                 </a>
                             </div>
                             <div class="blog-content">
                                 <h5>
-                                    <a href="blog-details.html">{{$news->title}}</a>
+                                    <a href="blog-details.html">{{$news?->title}}</a>
                                 </h5>
                             </div>
                         </div>
                         @endforeach
+                        @endif
                     </div>
                     <div class=" text-center">
                         <a href="about-us.html" class="default-btn btn  ">

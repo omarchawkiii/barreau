@@ -13,10 +13,6 @@
                             <i class="bx bx-phone-call"></i>
                             <a href="tel:+213 (0) 21 74 14 80">+213 (0) 21 74 14 80</a>
                         </li>
-                        <li>
-                            <i class="bx bx-envelope"></i>
-                            <a href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#86eee3eaeae9c6e3fcefe9a8e5e9eb"><span class="__cf_email__" data-cfemail="19717c757576597c637076377a7674">[email&#160;protected]</span></a>
-                        </li>
                     </ul>
                 </div>
 
@@ -57,7 +53,7 @@
             <div class="container">
                 <div class="mobile-menu">
                     <div class="logo">
-                        <a href="index.html">
+                        <a href="{{route('front.home')}}">
                             <img src="assets/img/logo.png" alt="logo">
                         </a>
                     </div>
@@ -68,7 +64,7 @@
         <div class="desktop-nav">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{route('front.home')}}">
                         <img src="assets/img/logo.png" alt="logo">
                     </a>
 

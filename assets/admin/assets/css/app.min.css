@@ -6895,15 +6895,16 @@ h6 {
     font-family: var(--font-family-primary) !important;
 }
 
-.menu-item.menuitem-active
+.menu-item.menuitem-active > a
 {
-    background-color: #B99B5C !important;
+    color: #B99B5C !important;
+    font-weight: bold !important;
 }
 
-.menu-item.menuitem-active .menu-link.active
+/*.menu-item.menuitem-active .menu-link.active
 {
     color: #fff;
-}
+}*/
 
 
 .bg-barreau-primary
@@ -6914,4 +6915,23 @@ h6 {
 .text-barreau-primary
 {
     color : #B99B5C !important;
+}
+
+.btn-barreau-primary
+{
+    color: #000;
+    background-color: #B99B5C;
+}
+
+
+.btn-barreau-primary:hover
+{
+    color: #fff;
+    background-color: #000;
+}
+
+
+.menu .menu-item .menu-link>.menu-arrow:before {
+    content: "\f0142";
+    font-family: "Material Design Icons";
 }

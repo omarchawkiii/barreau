@@ -60,7 +60,7 @@ class CatNewsManager extends Component
                 iconColor:'blue',
             );
             $this->dispatch('close-modal');
-            $this->loadCatNews();
+            $this->dispatch('refreshDatatable');
             session()->flash('message', 'Catégorie ajoutée avec succès.');
         }catch (\Exception $e) {
             // Gestion de l'erreur
@@ -99,7 +99,6 @@ class CatNewsManager extends Component
         $catNews = CatNews::findOrFail($this->catNewsId);
         $catNews->update(['title' => $this->title,'slug' =>$slug]);
         $this->resetForm();
-        $this->loadCatNews();
         $this->dispatch('swal',
             title : 'Modification réussie',
             text : 'La catégorie a été modifiée avec succès !.',
@@ -107,13 +106,13 @@ class CatNewsManager extends Component
             iconColor:'blue',
         );
         $this->dispatch('close-modal');
+        $this->dispatch('refreshDatatable');
         session()->flash('message', 'Catégorie mise à jour avec succès.');
     }
 
     public function delete($id)
     {
         CatNews::findOrFail($id)->delete();
-        $this->loadCatNews();
         $this->dispatch('swal',
             title : 'Suppression réussie',
             text : 'La catégorie a été supprimée avec succès !.',
@@ -121,6 +120,8 @@ class CatNewsManager extends Component
             iconColor:'blue',
         );
         session()->flash('message', 'Catégorie supprimée avec succès.');
+        $this->dispatch('refreshDatatable');
+
     }
 
     public function render()

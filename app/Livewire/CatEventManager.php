@@ -61,7 +61,7 @@ class CatEventManager extends Component
                 iconColor:'blue',
             );
             $this->dispatch('close-modal');
-            $this->loadcatEvents();
+            $this->dispatch('refreshDatatable');
             session()->flash('message', 'Catégorie ajoutée avec succès.');
         }catch (\Exception $e) {
             // Gestion de l'erreur
@@ -101,7 +101,7 @@ class CatEventManager extends Component
         $catEvents = CatEvent::findOrFail($this->catEventsId);
         $catEvents->update(['title' => $this->title,'slug' =>$slug]);
         $this->resetForm();
-        $this->loadcatEvents();
+        
         $this->dispatch('swal',
             title : 'Modification réussie',
             text : 'La catégorie a été modifiée avec succès !.',
@@ -109,19 +109,21 @@ class CatEventManager extends Component
             iconColor:'blue',
         );
         $this->dispatch('close-modal');
+        $this->dispatch('refreshDatatable');
+
         session()->flash('message', 'Catégorie mise à jour avec succès.');
     }
 
     public function delete($id)
     {
         CatEvent::findOrFail($id)->delete();
-        $this->loadcatEvents();
         $this->dispatch('swal',
             title : 'Suppression réussie',
             text : 'La catégorie a été supprimée avec succès !.',
             icon:'success',
             iconColor:'blue',
         );
+        $this->dispatch('refreshDatatable');
         session()->flash('message', 'Catégorie supprimée avec succès.');
     }
 

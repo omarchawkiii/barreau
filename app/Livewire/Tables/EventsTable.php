@@ -52,9 +52,7 @@ class EventsTable extends DataTableComponent
             Column::make('Catégorie', 'catEvent.title'),
             Column::make('Slug', 'slug')
                 ->deselected(),
-            Column::make('Content', 'content')
-                ->searchable()
-                ->deselected(),
+
             
             
             ButtonGroupColumn::make('Actions')

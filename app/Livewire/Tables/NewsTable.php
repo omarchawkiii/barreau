@@ -50,9 +50,7 @@ class NewsTable extends DataTableComponent
             Column::make('Catégorie', 'catNews.title'),
             Column::make('Slug', 'slug')
                 ->deselected(),
-            Column::make('Content', 'content')
-                ->searchable()
-                ->deselected(),
+
             
             
             ButtonGroupColumn::make('Actions')

@@ -4,12 +4,16 @@ namespace App\Livewire\Tables;
 
 use App\Models\User;
 use App\Models\Lawyer;
+use App\Models\Wilaya;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
 use Rappasoft\LaravelLivewireTables\Views\Columns\LinkColumn;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 use Rappasoft\LaravelLivewireTables\Views\Columns\ButtonGroupColumn;
+use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
 
 class LawyersTable extends DataTableComponent
 {
@@ -19,6 +23,7 @@ class LawyersTable extends DataTableComponent
         'nom_arb' => null,
         'nom_fr' => null,
         'prenom_fr' => null,
+        'prenom_ar' => null,
     ];
 
     public function configure(): void
@@ -241,6 +246,105 @@ class LawyersTable extends DataTableComponent
                         }),
 
                 ]),
+        ];
+    }
+
+
+    public function filters(): array
+    {
+        return [
+            SelectFilter::make('Wilaya')
+                ->options(
+                    array_merge(
+                        ["all" => "Toutes"],
+                        Lawyer::query()
+                            ->select('willaya')
+                            ->distinct()
+                            ->get()
+                            ->keyBy('willaya')
+                            ->map(fn($item) => $item->willaya)
+                            ->toArray()    
+                    )
+                    
+                )->filter(function(Builder $builder,string $value) {
+                    if($value != "all"){
+                        $builder->where('willaya', $value);
+                    }
+                }),
+            
+            SelectFilter::make('Sexe')
+                ->options(
+                    array_merge(
+                        ["all" => "Tous"],
+                        Lawyer::query()
+                            ->select('sexe')
+                            ->distinct()
+                            ->get()
+                            ->keyBy('sexe')
+                            ->map(fn($item) => $item->sexe)
+                            ->toArray()    
+                    )
+                    
+                )->filter(function(Builder $builder, string $value) {
+                    if ($value !== 'all') {
+                        $builder->where('sexe', $value);
+                    } 
+                }),
+            
+            SelectFilter::make('Etat')
+                ->options(
+                    array_merge(
+                        ["all" => "Toutes"],
+                        Lawyer::query()
+                            ->select('etat')
+                            ->distinct()
+                            ->get()
+                            ->keyBy('etat')
+                            ->map(fn($item) => $item->etat)
+                            ->toArray()    
+                    )
+                    
+                )->filter(function(Builder $builder, string $value) {
+                    if ($value !== 'all') {
+                        $builder->where('etat', $value);
+                    } 
+                }),
+            SelectFilter::make('Grade')
+                ->options(
+                    array_merge(
+                        ["all" => "Tous"],
+                        Lawyer::query()
+                            ->select('grade')
+                            ->distinct()
+                            ->get()
+                            ->keyBy('grade')
+                            ->map(fn($item) => $item->grade)
+                            ->toArray()    
+                    )
+                    
+                )->filter(function(Builder $builder, string $value) {
+                    if ($value !== 'all') {
+                        $builder->where('grade', $value);
+                    } 
+                }),
+            SelectFilter::make('Tribunal')
+                ->options(
+                    array_merge(
+                        ["all" => "Tous"],
+                        Lawyer::query()
+                            ->select('tribunal')
+                            ->distinct()
+                            ->get()
+                            ->keyBy('tribunal')
+                            ->map(fn($item) => $item->tribunal)
+                            ->toArray()    
+                    )
+                    
+                )->filter(function(Builder $builder, string $value) {
+                    if ($value !== 'all') {
+                        $builder->where('tribunal', $value);
+                    } 
+                }),
         ];
     }
 }

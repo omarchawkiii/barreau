@@ -36,7 +36,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{ $isEditing ? 'Modifier l\'événement' : 'Ajouter un événement' }}</h5>
+                    <h5 class="modal-title">{{ $isEditing ? 'modifier l\'actualité' : 'ajouter une actualité' }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form wire:submit.prevent="{{ $isEditing ? 'update' : 'add' }}" id="news-form">
@@ -75,7 +75,13 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-primary">{{ $isEditing ? 'Mettre à jour' : 'Ajouter' }}</button>
+                        <button type="submit" 
+                                class="btn btn-primary" 
+                                wire:loading.attr="disabled">
+                            <span wire:loading.remove>{{ $isEditing ? 'Mettre à jour' : 'Ajouter' }}</span>
+                            <span wire:loading>Uploading...</span>
+                        </button>
+            
                     </div>
                 </form>
             </div>

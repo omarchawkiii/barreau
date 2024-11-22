@@ -26,34 +26,9 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card ">
+            <div class="card">
                 <div class="card-body">
-                    <table id="data-listing" class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nom</th>
-                                <th>Slug</th>
-                                <th>Nombre des News</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($catEvents as $key=> $cat)
-                                <tr>
-                                    <td>{{ $key +1 }}</td>
-                                    <td>{{ $cat->title }}</td>
-                                    <td>{{ $cat->slug }}</td>
-                                    <td>{{ $cat->events->count() }}</td>
-                                    <td>
-                                        <a href="javascript:void(0);" onclick="edit_cat({{ $cat->id }})" class="action-icon" > <i class="mdi mdi-square-edit-outline text-warning"></i></button>
-                                        <a href="javascript:void(0);" class="action-icon" onclick="confirmDeletion({{ $cat->id }})"> <i class="mdi mdi-delete text-danger" ></i></button>
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <livewire:tables.cat-events-table />
                 </div>
             </div>
         </div>
@@ -117,7 +92,7 @@
 </script>
 
 <script>
-    function edit_cat(id) {
+    function edit(id) {
         $('#categoryModal').modal('show');
         @this.call('edit', id);
 
@@ -150,21 +125,3 @@
 
 
 </script>
-
-@section('custom_script')
-    <script>
-        $(document).ready(function() {
-            $("#data-listing").DataTable({
-                language: {
-                    paginate: {
-                        previous: "<i class='mdi mdi-chevron-left'>",
-                        next: "<i class='mdi mdi-chevron-right'>"
-                    }
-                },
-                drawCallback: function() {
-                    $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
-                }
-            });
-        });
-    </script>
-@endsection

@@ -27,33 +27,7 @@
 
     <div class="card">
         <div class="card-body">
-            <table id="data-listing" class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th> Image </th>
-                        <th>Title</th>
-                        <th>Slug</th>
-                        <th>Catégorie</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($newses as $news)
-                        <tr>
-                            <td>{{ $news->id }}</td>
-                            <td><img src="{{  asset('storage/'.$news->thumbnail)  }}"  class=" avatar-xl"/> </td>
-                            <td>{{ $news->title }}</td>
-                            <td>{{ $news->slug }}</td>
-                            <td>{{ $news->catNews->title }}</td>
-                            <td>
-                                <a href="javascript:void(0);" class="action-icon" onclick="edit_news({{ $news->id }})"> <i class="mdi mdi-square-edit-outline text-warning"></i></button>
-                                <a href="javascript:void(0);" class="action-icon" onclick="confirmDeletion({{ $news->id }})"> <i class="mdi mdi-delete text-danger" ></i></button>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <livewire:tables.news-table />
         </div>
     </div>
 
@@ -73,20 +47,20 @@
                             @error('title') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label for="content">Contenu</label>
-                            <textarea id="content" class="form-control" wire:model.defer="content"></textarea>
+                            <textarea id="wysiwyg" class="form-control" wire:model.defer="content"></textarea>
                             @error('content') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label for="thumbnail">Thumbnail</label>
                             <input type="file" id="thumbnail" class="form-control" wire:model="thumbnail">
                             @error('thumbnail') <span class="text-danger">{{ $message }}</span> @enderror
 
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <label for="cat_news_id">Catégorie</label>
                             <select id="cat_news_id" class="form-control" wire:model.defer="cat_news_id">
                                 <option value="">Choisir une catégorie</option>
@@ -126,10 +100,9 @@
     }
 </script>
 <script>
-    function edit_news(id) {
+    function edit(id) {
         $('#newsModal').modal('show');
         @this.call('edit', id);
-
     }
 </script>
 <script>
@@ -141,7 +114,6 @@
 
 <script>
     window.addEventListener('swal', event => {
-
         Swal.fire({
             title:  event.detail.title,
             text:event.detail.text,
@@ -151,26 +123,29 @@
             position: 'center-center',
             showConfirmButton:  false,
         });
-
     });
-
 </script>
 
 
-@section('custom_script')
-    <script>
-        $(document).ready(function() {
-            $("#data-listing").DataTable({
-                language: {
-                    paginate: {
-                        previous: "<i class='mdi mdi-chevron-left'>",
-                        next: "<i class='mdi mdi-chevron-right'>"
-                    }
-                },
-                drawCallback: function() {
-                    $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
-                }
-            });
-        });
-    </script>
-@endsection
+
+<script src="https://cdn.ckeditor.com/ckeditor5/43.3.1/ckeditor5.umd.js"></script>
+
+<script>
+    const {
+        ClassicEditor,
+        Essentials,
+        Bold,
+        Italic,
+        Font,
+        Paragraph
+    } = CKEDITOR;
+
+    ClassicEditor
+        .create( document.querySelector( '#wysiwyg' ), {
+            plugins: [ Essentials, Bold, Italic, Font, Paragraph ],
+            toolbar: [
+                'undo', 'redo', '|', 'bold', 'italic', '|',
+                'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+            ]
+        } )
+</script>

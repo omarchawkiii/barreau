@@ -13,6 +13,7 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
+use Spatie\Permission\Models\Role;
 
 use function Laravel\Prompts\error;
 
@@ -139,6 +140,8 @@ class ImportLawyer extends Component
             ]);
 
             Lawyer::create(array_merge($validated_data, ['user_id'=>$user->id]));
+            $lawyerRole = Role::firstOrCreate(['name' => 'Lawyer']);
+            $user->assignRole($lawyerRole);
 
             $this->dispatch('swal',
                 title : 'Création réussie',
@@ -149,6 +152,8 @@ class ImportLawyer extends Component
 
             $this->resetForm();
             $this->dispatch('close-modal');
+            $this->dispatch('refreshDatatable');
+
 
         } catch (\Exception $e) {
             session()->flash('status', 'error');
@@ -215,8 +220,8 @@ class ImportLawyer extends Component
     public function update()
     {
         $validated_data = $this->validate((new LawyerStoreRequest())->rules());
-        
-        
+
+
         try {
             $lawyer = Lawyer::findOrFail($this->lawyer_id);
             $lawyer->update($validated_data);
@@ -232,7 +237,7 @@ class ImportLawyer extends Component
 
             $this->resetForm();
             $this->dispatch('close-modal');
-
+            $this->dispatch('refreshDatatable');
         } catch (\Exception $e) {
             session()->flash('status', 'error');
             session()->flash('message', 'Une erreur est survenue lors de la mise à jour de l\'événement.');
@@ -259,6 +264,8 @@ class ImportLawyer extends Component
                 iconColor : '#3085d6',
             );
 
+            $this->dispatch('refreshDatatable');
+
         } catch (\Exception $e) {
 
             session()->flash('status', 'error');
@@ -273,16 +280,16 @@ class ImportLawyer extends Component
     }
     public function upload_lawyer()
     {
-        $this->rules = $this->rulesForUpload;
+        //$this->rules = $this->rulesForUpload;
         $this->validate(['excelFile' => 'required|file']);
         try
         {
             $this->loading = true;
+            $lawyerRole = Role::firstOrCreate(['name' => 'Lawyer']);
 
-                $data = Excel::toArray(new ImportLawyer, $this->excelFile->getRealPath());
-                DB::beginTransaction();
-                foreach ($data[0] as $row) {
-
+            $data = Excel::toArray(new ImportLawyer, $this->excelFile->getRealPath());
+            DB::beginTransaction();
+            foreach ($data[0] as $row) {
                 if($row[38])
                 {
 
@@ -293,6 +300,8 @@ class ImportLawyer extends Component
                         'name' => $row[5] . ' ' . $row[6],
                         'password' => Hash::make('password') // Générer un mot de passe temporaire
                     ]);
+
+                    $user->assignRole($lawyerRole);
 
                     // Créer l'avocat
                     Lawyer::updateOrCreate(
@@ -345,9 +354,8 @@ class ImportLawyer extends Component
                 }
             }
 
-                DB::commit();
-
-
+            DB::commit();
+            $this->dispatch('refreshDatatable');
             session()->flash('message', 'Le fichier a été importé avec succès.');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -364,8 +372,6 @@ class ImportLawyer extends Component
 
             $this->resetForm();
             $this->dispatch('close-modal');
-
-
         }
     }
     public function render()

@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\Catnews;
+use App\Models\CatNews;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\News;
@@ -53,6 +53,7 @@ class NewsManager extends Component
                 'user_id' => null
             ]);
 
+
             $this->dispatch('swal',
                 title : 'Création réussie',
                 text : 'L\'événement a été créé avec succès !',
@@ -60,6 +61,7 @@ class NewsManager extends Component
                 iconColor : '#3085d6',
             );
 
+            $this->dispatch('refreshDatatable');
             $this->resetForm();
             $this->dispatch('close-modal');
 
@@ -94,8 +96,6 @@ class NewsManager extends Component
         try {
             $news = News::findOrFail($this->newsId);
 
-
-
             if ($this->thumbnail instanceof \Illuminate\Http\UploadedFile) {
                 // Delete the old image if it exists
                 if ($news->thumbnail) {
@@ -104,7 +104,6 @@ class NewsManager extends Component
                 // Store the new image
                 $news->thumbnail = $this->thumbnail->store('thumbnails', 'public');
             }
-
 
             if($this->slug != null)
             {
@@ -134,6 +133,7 @@ class NewsManager extends Component
 
             $this->resetForm();
             $this->dispatch('close-modal');
+            $this->dispatch('refreshDatatable');
 
         } catch (\Exception $e) {
             session()->flash('status', 'error');
@@ -160,6 +160,7 @@ class NewsManager extends Component
 
             session()->flash('status', 'success');
             session()->flash('message', 'Suppression réussie');
+            $this->dispatch('refreshDatatable');
             $this->dispatch('swal',
                 title : 'Suppression réussie',
                 text : 'L\'événement a été supprimé avec succès !',

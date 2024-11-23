@@ -1,19 +1,21 @@
 <?php
 
+use App\Models\News;
+use App\Models\User;
+use App\Livewire\CatNewsManager;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Permission;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\LawyerController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScrutinController;
 use App\Http\Controllers\Cat_newsController;
 use App\Http\Controllers\Cat_eventsController;
-use App\Http\Controllers\EventController;
 use App\Http\Controllers\Front\HomeController;
-use App\Http\Controllers\LawyerController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\ProfileController;
-use App\Livewire\CatNewsManager;
-use Illuminate\Support\Facades\Route;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use App\Models\User;
+use App\Http\Controllers\Front\NewsController as FrontNewsController;
 /*saloua begin*/
-use App\Http\Controllers\ScrutinController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Avocat\Demande\DemandeController;
 /*saloua end*/
 /*
@@ -28,6 +30,7 @@ use App\Http\Controllers\Avocat\Demande\DemandeController;
 */
 
 Route::get('/',  [HomeController::class, 'index'])->name('front.home');
+Route::get('/news',  [FrontNewsController::class, 'index'])->name('front.news');
     /*$role = Role::create(['name' => 'SuperAdmin']);
     $role_admin = Role::create(['name' => 'Admin']);
     $role_lawyer = Role::create(['name' => 'Lawyer']);

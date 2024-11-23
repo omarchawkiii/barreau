@@ -82,12 +82,16 @@
 				background-color: #fff;
 				border: 1px solid #b99b5c;
 			}
+
+			.nice-select {
+				width: -webkit-fill-available;
+			}
 		</style>
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="{{ asset('/assets/img/favicon.png')}}">
 		<!-- Title -->
 		<title>Barreau</title>
-
+		@livewireStyles
         @yield('customcss')
     </head>
     <body>
@@ -154,6 +158,8 @@
 		<!-- Ajaxchimp Min JS -->
 		<script src="{{asset('/assets/js/ajaxchimp.min.js')}}"></script>
         <!-- Custom  JS -->
+		@livewireScripts
+        @yield('custom_script')
 		<script src="{{asset('/assets/js/custom.js')}}"></script>
 
     </body>

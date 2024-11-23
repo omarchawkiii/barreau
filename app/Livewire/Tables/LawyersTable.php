@@ -252,8 +252,9 @@ class LawyersTable extends DataTableComponent
 
     public function filters(): array
     {
-        return [
-            SelectFilter::make('Wilaya')
+        if(Auth::guest())
+            return [
+                SelectFilter::make('Wilaya')
                 ->options(
                     array_merge(
                         ["all" => "Toutes"],
@@ -272,79 +273,102 @@ class LawyersTable extends DataTableComponent
                     }
                 }),
             
-            SelectFilter::make('Sexe')
-                ->options(
-                    array_merge(
-                        ["all" => "Tous"],
-                        Lawyer::query()
-                            ->select('sexe')
-                            ->distinct()
-                            ->get()
-                            ->keyBy('sexe')
-                            ->map(fn($item) => $item->sexe)
-                            ->toArray()    
-                    )
-                    
-                )->filter(function(Builder $builder, string $value) {
-                    if ($value !== 'all') {
-                        $builder->where('sexe', $value);
-                    } 
-                }),
             
-            SelectFilter::make('Etat')
-                ->options(
-                    array_merge(
-                        ["all" => "Toutes"],
-                        Lawyer::query()
-                            ->select('etat')
-                            ->distinct()
-                            ->get()
-                            ->keyBy('etat')
-                            ->map(fn($item) => $item->etat)
-                            ->toArray()    
-                    )
-                    
-                )->filter(function(Builder $builder, string $value) {
-                    if ($value !== 'all') {
-                        $builder->where('etat', $value);
-                    } 
-                }),
-            SelectFilter::make('Grade')
-                ->options(
-                    array_merge(
-                        ["all" => "Tous"],
-                        Lawyer::query()
-                            ->select('grade')
-                            ->distinct()
-                            ->get()
-                            ->keyBy('grade')
-                            ->map(fn($item) => $item->grade)
-                            ->toArray()    
-                    )
-                    
-                )->filter(function(Builder $builder, string $value) {
-                    if ($value !== 'all') {
-                        $builder->where('grade', $value);
-                    } 
-                }),
-            SelectFilter::make('Tribunal')
-                ->options(
-                    array_merge(
-                        ["all" => "Tous"],
-                        Lawyer::query()
-                            ->select('tribunal')
-                            ->distinct()
-                            ->get()
-                            ->keyBy('tribunal')
-                            ->map(fn($item) => $item->tribunal)
-                            ->toArray()    
-                    )
-                    
-                )->filter(function(Builder $builder, string $value) {
-                    if ($value !== 'all') {
-                        $builder->where('tribunal', $value);
-                    } 
-                }),
-        ];
+            ];
+        else
+            return [
+                SelectFilter::make('Wilaya')
+                    ->options(
+                        array_merge(
+                            ["all" => "Toutes"],
+                            Lawyer::query()
+                                ->select('willaya')
+                                ->distinct()
+                                ->get()
+                                ->keyBy('willaya')
+                                ->map(fn($item) => $item->willaya)
+                                ->toArray()    
+                        )
+                        
+                    )->filter(function(Builder $builder,string $value) {
+                        if($value != "all"){
+                            $builder->where('willaya', $value);
+                        }
+                    }),
+                
+                SelectFilter::make('Sexe')
+                    ->options(
+                        array_merge(
+                            ["all" => "Tous"],
+                            Lawyer::query()
+                                ->select('sexe')
+                                ->distinct()
+                                ->get()
+                                ->keyBy('sexe')
+                                ->map(fn($item) => $item->sexe)
+                                ->toArray()    
+                        )
+                        
+                    )->filter(function(Builder $builder, string $value) {
+                        if ($value !== 'all') {
+                            $builder->where('sexe', $value);
+                        } 
+                    }),
+                
+                SelectFilter::make('Etat')
+                    ->options(
+                        array_merge(
+                            ["all" => "Toutes"],
+                            Lawyer::query()
+                                ->select('etat')
+                                ->distinct()
+                                ->get()
+                                ->keyBy('etat')
+                                ->map(fn($item) => $item->etat)
+                                ->toArray()    
+                        )
+                        
+                    )->filter(function(Builder $builder, string $value) {
+                        if ($value !== 'all') {
+                            $builder->where('etat', $value);
+                        } 
+                    }),
+                SelectFilter::make('Grade')
+                    ->options(
+                        array_merge(
+                            ["all" => "Tous"],
+                            Lawyer::query()
+                                ->select('grade')
+                                ->distinct()
+                                ->get()
+                                ->keyBy('grade')
+                                ->map(fn($item) => $item->grade)
+                                ->toArray()    
+                        )
+                        
+                    )->filter(function(Builder $builder, string $value) {
+                        if ($value !== 'all') {
+                            $builder->where('grade', $value);
+                        } 
+                    }),
+                SelectFilter::make('Tribunal')
+                    ->options(
+                        array_merge(
+                            ["all" => "Tous"],
+                            Lawyer::query()
+                                ->select('tribunal')
+                                ->distinct()
+                                ->get()
+                                ->keyBy('tribunal')
+                                ->map(fn($item) => $item->tribunal)
+                                ->toArray()    
+                        )
+                        
+                    )->filter(function(Builder $builder, string $value) {
+                        if ($value !== 'all') {
+                            $builder->where('tribunal', $value);
+                        } 
+                    }),
+            ];
     }
 }

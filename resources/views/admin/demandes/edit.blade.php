@@ -1,6 +1,4 @@
-@extends('avocat.layouts.app')
-
-@section('title', __('Mes demandes'))
+@extends('admin.layouts.app')
 
 @section('content')
     <div class="content">
@@ -17,7 +15,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">{{ __('Mes demandes') }}</h4>
+                        <h4 class="page-title">{{ __('Demandes') }}</h4>
                     </div>
                 </div>
             </div>
@@ -27,10 +25,14 @@
                         <div class="card-body">
                             <h1 class="">{{ __('Modifier une demande') }}</h1>
 
-                            <form action="{{ route('avocat.demandes.update', $demandeServAgrement->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.demandes.update', $demandeServAgrement->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                @method('POST')
+                                @method('PATCH')
                                 <div class="row">
+                                    <div class="col-md-5 mb-3">
+                                        <label for="stagiaire_id" class="form-label">{{ __('Nom Prenom Stagiaire') }}</label>
+                                        <input type="text" id="stagiaire_id" class="form-control" style="pointer-events: none;" value="{{ $demandeServAgrement->stagiaire->nomprenomfr }}">
+                                    </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="type-agrement" class="form-label">{{ __('Type de agrement') }}</label>
                                         <select id="type-agrement" name="type_agrement_id" class="form-select @error('type_agrement_id') is-invalid @enderror" placeholder="Type de demande (de stage, levé de stage, agrément, visa ...ect)">
@@ -105,11 +107,10 @@
                                 </div>
                                 <div class="col-12 text-end">
                                   <button type="submit" name="action" value="savegarder" id="savegarder" class="btn btn-primary px-5">{{ __('Savegarder') }}</button>
-                                  <button type="submit" name="action" value="valider" id="valider" class="btn btn-primary px-5">{{ __('Envoyer') }}</button>
                                 </div>
                             </form><!-- end form-->
-                            @include('avocat.demandes.delete-dossier')
-                            @include('avocat.demandes.edit-dossier')
+                            @include('admin.demandes.edit-dossier')
+                            @include('admin.demandes.delete-dossier')
                         </div><!-- end card body-->
                     </div> <!-- end card-->
                 </div> <!-- end col -->
@@ -138,9 +139,7 @@
     <script>
         var cpt = 0;
         let buttonSavegarder = document.getElementById("savegarder");
-        let buttonValider = document.getElementById("valider");
         buttonSavegarder.disabled  = true;
-        buttonValider.disabled  = false;
         // ** start ajouter row ficher
         $(document).on('click', '#ajouter-row-ficher', function() {
             cpt++;
@@ -174,7 +173,6 @@
             $('#container-row').append(ajouterRowFicher);
             if (cpt > 0) {
                 buttonSavegarder.disabled  = false;
-                buttonValider.disabled  = true;
             }
         });
 
@@ -183,10 +181,8 @@
           $(this).closest('.container-row-delete').remove();
           if (cpt == 0) {
                 buttonSavegarder.disabled  = true;
-                buttonValider.disabled  = false;
             }
         });
-
         // ** end ajouter row ficher
         // ** Start deleted dossier
         $(document).ready(function() {
@@ -202,7 +198,7 @@
             $('#confirmDeleteDossier').on('click', function() {
 
                 $.ajax({
-                    url: '{{ route('avocat.demande.destroy.dossier', ':deleteId') }}'.replace(':deleteId', deleteId),
+                    url: '{{ route('admin.demandes.destroy.dossier', ':deleteId') }}'.replace(':deleteId', deleteId),
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     type: 'DELETE',
                     data: {
@@ -235,7 +231,7 @@
                 editId = $(this).data('id');
 
                 $.ajax({
-                    url: '{{ route('avocat.demande.edit.dossier', ':editId') }}'.replace(':editId', editId),
+                    url: '{{ route('admin.demandes.edit.dossier', ':editId') }}'.replace(':editId', editId),
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     type: 'POST',
                     data: {
@@ -279,7 +275,7 @@
                 var formData = new FormData($("#updateDossierForm")[0]);
 
                 $.ajax({
-                    url: '{{ route('avocat.demande.update.dossier', ':editId') }}'.replace(':editId', editId),
+                    url: '{{ route('admin.demandes.update.dossier', ':editId') }}'.replace(':editId', editId),
                     type: "POST",
                     data: formData,
                     processData: false,

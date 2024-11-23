@@ -23,8 +23,6 @@ class AjouterDemandeRequest extends FormRequest
     {
         return [
             'type_agrement_id'  => 'required',
-            // 'titre_ficher'  => 'required',
-            // 'ficher'  => 'required',
             'titre_fichers'   => 'required|array',
             'titre_fichers.*' => 'required|string|max:255',
             'fichers'   => 'required|array',

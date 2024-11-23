@@ -59,7 +59,7 @@
 
             <li class="menu-title">Navigation</li>
             <li class="menu-item">
-                <a href="{{ route('avocat.dashboard') }}" class="menu-link">
+                <a href="{{ route('admin.dashboard') }}" class="menu-link">
                     <span class="menu-icon"><i class="mdi mdi-speedometer"></i></span>
                     <span class="menu-text"> Mes informations</span>
                 </a>
@@ -89,12 +89,12 @@
                 <div class="collapse" id="menuuser">
                     <ul class="sub-menu">
                           <li class="menu-item">
-                            <a href="{{ route('demandes') }}" class="menu-link">
+                            <a href="{{ route('avocat.demandes.index')}}" class="menu-link">
                                 <span class="menu-text">Mes demandes  </span>
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{ route('demandes.ajouter') }}" class="menu-link">
+                            <a href="{{ route('avocat.demandes.create') }}" class="menu-link">
                                 <span class="menu-text">Ajouter demande  </span>
                             </a>
                         </li>
@@ -135,7 +135,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="{{ route('scrutins.index') }}" class="menu-link">
+                <a href="#" class="menu-link">
                     <span class="menu-icon"><i class="mdi mdi-checkbox-blank-outline"></i></span>
                     <span class="menu-text"> Scrutins & sondages  </span>
                 </a>

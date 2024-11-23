@@ -6,7 +6,7 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('Supprime le demande') }}</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{ route('avocat.demandes.destroy', $demandeServAgrement->id) }}" method="POST">
+        <form action="{{ route('admin.demandes.destroy', $demandeServAgrement->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <div class="modal-body">
@@ -14,7 +14,7 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Annulée')}}</button>
-            <button type="submit" class="btn btn-outline-danger"><i class="mdi mdi-trash-can"></i> {{ __('Supprime') }}</button>
+            <button type="submit" class="btn btn-danger"><i class="mdi mdi-trash-can"></i> {{ __('Supprime') }}</button>
             </div>
         </form>
       </div>

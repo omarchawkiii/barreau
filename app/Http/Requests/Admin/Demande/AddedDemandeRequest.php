@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Demandes;
+namespace App\Http\Requests\Admin\Demande;
 
+use Blueprint\Tree;
 use Illuminate\Foundation\Http\FormRequest;
+use SebastianBergmann\Type\TrueType;
 
-class ModifierDemandeRequest extends FormRequest
+class AddedDemandeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +24,13 @@ class ModifierDemandeRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'stagiaire_id'  => 'required|exists:stagiaires,id',
             'type_agrement_id'  => 'required',
-            // 'titre_ficher'  => 'required',
-            // 'ficher'  => 'required',
-            'titre_fichers'   => 'nullable|array',
-            'titre_fichers.*' => 'nullable|string|max:255',
-            'fichers'   => 'nullable|array',
-            'fichers.*' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:5120',  // max size in KB (5MB = 5120KB)
+            'titre_fichers'     => 'required|array',
+            'titre_fichers.*'   => 'required|string|max:255',
+            'fichers'   => 'required|array',
+            'fichers.*' => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:5120',  // max size in KB (5MB = 5120KB)
+
         ];
     }
 

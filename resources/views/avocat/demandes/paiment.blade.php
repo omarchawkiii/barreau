@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">{{ __('Mes demandes') }}</h4>
+                        <h4 class="page-title">{{ __('Détails de la demande') }}</h4>
                     </div>
                 </div>
             </div>
@@ -19,13 +19,13 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="">{{ __('Voir une demande') }}</h1>
-                            <form action="#" method="POST" enctype="multipart/form-data">
-                                @csrf
+                            <h1 class="">{{ __('Détails de la demande') }}</h1>
+                            <p class="text-success">{{ __('Status dossier valide') }}</p>
+                            <form  method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="type-agrement" class="form-label">{{ __('Type de agrement') }}</label>
-                                        <input type="text" class="form-control" id="type-agrement" style="pointer-events: none;" value="{{ $demandeServAgrement->typeAgrement->nom_fr }}">
+                                        <input type="text" class="form-control " style="pointer-events: none;" value="{{ $demandeServAgrement->typeAgrement->nom_fr }}">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -35,7 +35,6 @@
                                                 <th>#</th>
                                                 <th>{{ __('Titre') }}</th>
                                                 <th>{{ __('Line') }}</th>
-                                                <th>{{ __('Action') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,37 +54,31 @@
                                                             </a>
                                                         @elseif($item->documents['extension'] === 'pdf')
                                                             {{-- Display link to PDF --}}
-                                                            <a class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ $url }}" target="_blank">{{__('Voir le PDF') }}</a>
+                                                            <a class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ $url }}" target="_blank">View PDF</a>
                                                         @else
                                                             {{-- Other file types --}}
-                                                            <a class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ $url }}" target="_blank">{{__('Télécharge') }} {{ $item->documents['titre'] }}</a>
+                                                            <a class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ $url }}" target="_blank">Download {{ $item->documents['titre'] }}</a>
                                                         @endif
                                                     </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteDossier-{{$item->id}}">
-                                                            <i class="mdi mdi-trash-can"></i>
-                                                        </button>
-                                                    </td>
                                                 </tr>
-                                                @include('avocat.demandes.delete-dossier')
                                             @endforeach
                                         </tbody>
                                     </table> <!-- end table -->
                                 </div>
                                 <div class="col-12 text-end">
-                                  <a href="{{ route('avocat.demandes.paiment',  $demandeServAgrement->id) }}"  class="btn btn-primary px-5">{{ __('Envoyer') }}</a>
+                                  {{-- <button type="submit" class="btn btn-primary px-5">{{ __('Savegarder') }}</button> --}}
+                                  <button type="button" class="btn btn-primary px-5">{{ __('Payer') }}</button>
                                 </div>
                             </form><!-- end form-->
                         </div><!-- end card body-->
-                    </div> <!-- end card-->
-                </div> <!-- end col -->
+                    </div> <!-- end card -->
+                </div> <!-- end col-->
             </div><!-- end row-->
 
         </div> <!-- container -->
 
     </div>
 @endsection
-
 
 
 @section('customcss')
@@ -100,8 +93,21 @@
     </style>
 @endsection
 
+
 @section('custom_script')
     <script>
-
+        $(document).ready(function() {
+            $("#basic-datatable").DataTable({
+                language: {
+                    paginate: {
+                        previous: "<i class='mdi mdi-chevron-left'>",
+                        next: "<i class='mdi mdi-chevron-right'>"
+                    }
+                },
+                drawCallback: function() {
+                    $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
+                }
+            });
+        });
     </script>
 @endsection

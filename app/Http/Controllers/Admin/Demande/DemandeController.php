@@ -1,40 +1,48 @@
 <?php
 
-namespace App\Http\Controllers\Avocat\Demande;
+namespace App\Http\Controllers\Admin\Demande;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Demandes\AjouterDemandeRequest;
-use App\Http\Requests\Demandes\ModifierDemandeRequest;
-use App\Http\Requests\Demandes\ModifierDossierRequest;
+use App\Http\Requests\Admin\Demande\AddedDemandeRequest;
+use App\Http\Requests\Admin\Demande\UpdateDemandeRequest;
+use App\Http\Requests\Admin\Demande\UpdateDossierRequest;
 use App\Models\DemandeServAgrement;
 use App\Models\Dossier;
+use App\Models\Stagiaire;
 use App\Models\TypeAgrement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 
 class DemandeController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $demandeServAgrements = DemandeServAgrement::orderBy('id', 'DESC')->get();
-        return view('avocat.demandes.index', compact('demandeServAgrements'));
+        $demandeServAgrements = DemandeServAgrement::orderBy("id","desc")->get();
+//dd($demandeServAgrements->stagiaires);
+        return view("admin.demandes.index", compact("demandeServAgrements"));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         $typeAgrements = TypeAgrement::all()->toBase();
+        $stagiaires = Stagiaire::orderBy('id', 'DESC')->get();
 
-        return view('avocat.demandes.add', compact('typeAgrements'));
+        return view("admin.demandes.add", compact("typeAgrements", "stagiaires") );
     }
 
-    public function store(AjouterDemandeRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(AddedDemandeRequest $request)
     {
-
         try {
             DB::beginTransaction();
 
@@ -76,12 +84,8 @@ class DemandeController extends Controller
             toastr()->success(__('Demande ajouter avec succès.'));
 
             DB::commit();
-            if ($request->input('action') === 'savegarder') {
-                return redirect()->route('avocat.demandes.edit', $demandeServAgrement->id )->withSuccess('Demande ajouter avec succès.');
-            } elseif ($request->input('action') === 'valider') {
-                // For "Valider" button: Save and redirect to payment page
-                return redirect()->route('avocat.demandes.paiment', $demandeServAgrement->id)->withSuccess('Demande ajouter avec succès. Proceed to payment.');
-            }
+            return redirect()->route('admin.demandes.edit', $demandeServAgrement->id )->withSuccess('Demande ajouter avec succès.');
+
 
         }
         catch (\Exception  $e) {
@@ -89,38 +93,33 @@ class DemandeController extends Controller
             toastr()->error($e);
             return redirect()->back()->withErrors($e);
         }
-
-
     }
 
-    public function show($id)
+    /** 
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $demandeServAgrement = DemandeServAgrement::find($id);
+
+        return view("admin.demandes.show", compact("demandeServAgrement"));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $typeAgrements = TypeAgrement::all()->toBase();
-        $demandeServAgrement = DemandeServAgrement::with('dossier')->find($id);
-        // dd($demandeServAgrement);
-        return view('avocat.demandes.show' , compact('typeAgrements','demandeServAgrement'));
+        $demandeServAgrement = DemandeServAgrement::find($id);
+
+        return view("admin.demandes.edit", compact("demandeServAgrement", "typeAgrements"));
     }
 
-    public function edit($id)
-    {
-        $typeAgrements = TypeAgrement::all()->toBase();
-        $demandeServAgrement = DemandeServAgrement::with('dossier')->find($id);
-        return view('avocat.demandes.edit' , compact('typeAgrements','demandeServAgrement'));
-    }
-    public function editDossier(Request $request, $id)
-    {
-        $dosser = Dossier::find($id);
-
-        if($request->ajax())
-        {
-            return response()->json([
-                'status' => true,
-                'data' => $dosser,
-            ]);
-        }
-    }
-
-    public function update(ModifierDemandeRequest $request, $id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateDemandeRequest $request, string $id)
     {
 
         try {
@@ -131,11 +130,6 @@ class DemandeController extends Controller
 
             $typeAgrement = TypeAgrement::find($request->type_agrement_id);
             $demandeServAgrement = DemandeServAgrement::find($id);
-
-            if ($request->input('action') === 'valider') {
-                // For "Valider" button: Save and redirect to payment page
-                return redirect()->route('avocat.demandes.paiment', $demandeServAgrement->id)->withSuccess('Demande ajouter avec succès. Proceed to payment.');
-            }
 
             $demandeServAgrement->update([
                 'type_agrement_id' => $request->type_agrement_id,
@@ -181,10 +175,23 @@ class DemandeController extends Controller
             return redirect()->back()->withErrors($e);
         }
     }
-    public function updateDossier(ModifierDossierRequest $request, $id)
+
+    public function editDossier(Request $request, $id)
+    {
+        $dosser = Dossier::find($id);
+
+        if($request->ajax())
+        {
+            return response()->json([
+                'status' => true,
+                'data' => $dosser,
+            ]);
+        }
+    }
+
+    public function updateDosseir(UpdateDossierRequest $request, $id)
     {
         try {
-
             DB::beginTransaction();
             $randomId =  rand(3,999);
             $dossier = Dossier::find($id);
@@ -231,7 +238,10 @@ class DemandeController extends Controller
         }
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
         try
         {
@@ -291,9 +301,24 @@ class DemandeController extends Controller
         }
     }
 
-    public function createPaiment($id)
+    public function statusDemande(Request $request, $id)
     {
-        $demandeServAgrement = DemandeServAgrement::with('dossier')->find($id);
-        return view('avocat.demandes.paiment', compact('demandeServAgrement'));
+        try {
+            DB::beginTransaction();
+            $demandeServAgrement = DemandeServAgrement::find($id);
+
+            $demandeServAgrement->update([
+                'status'=> $request->status,
+            ]);
+
+            toastr()->success(__('Le statut de la demande a été modifié avec succès'));
+            Db::commit();
+            return redirect()->back()->withSuccess('Le statut de la demande a été modifié avec succès');
+        }
+        catch (\Exception  $e) {
+            DB::rollBack();
+            toastr()->error($e);
+            return redirect()->back()->withErrors($e);
+        }
     }
 }

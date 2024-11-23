@@ -11,7 +11,9 @@
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Annulée')}}</button>
-            <button type="button" class="btn btn-outline-danger confirmDeleteDossier" id="confirmDeleteDossier"><i class="mdi mdi-trash-can"></i> {{ __('Supprime') }}</button>
+            <button type="button" class="btn btn-outline-danger confirmDeleteDossier" id="confirmDeleteDossier">
+                {{ __('Supprimer') }}
+            </button>
             </div>
       </div>
     </div>

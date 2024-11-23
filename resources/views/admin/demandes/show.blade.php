@@ -1,6 +1,4 @@
-@extends('avocat.layouts.app')
-
-@section('title', __('Mes demandes'))
+@extends('admin.layouts.app')
 
 @section('content')
     <div class="content">
@@ -11,7 +9,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">{{ __('Mes demandes') }}</h4>
+                        <h4 class="page-title">{{ __('Demandes (Stage/Agrements/Carts/Visas)') }}</h4>
                     </div>
                 </div>
             </div>
@@ -20,9 +18,12 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="">{{ __('Voir une demande') }}</h1>
-                            <form action="#" method="POST" enctype="multipart/form-data">
-                                @csrf
+                            <form >
                                 <div class="row">
+                                    <div class="col-md-5 mb-3">
+                                        <label for="stagiaire_id" class="form-label">{{ __('Nom Prenom Stagiaire') }}</label>
+                                        <input type="text" id="stagiaire_id" class="form-control" style="pointer-events: none;" value="{{ $demandeServAgrement->stagiaire->nomprenomfr }}">
+                                    </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="type-agrement" class="form-label">{{ __('Type de agrement') }}</label>
                                         <input type="text" class="form-control" id="type-agrement" style="pointer-events: none;" value="{{ $demandeServAgrement->typeAgrement->nom_fr }}">
@@ -62,30 +63,28 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteDossier-{{$item->id}}">
-                                                            <i class="mdi mdi-trash-can"></i>
+                                                        <button type="button" class="btn btn-outline-danger delete-dossier mt-3" data-id="{{ $item->id }}">
+                                                            <span class="mdi mdi-trash-can-outline mt-2" style="font-size: 15px;"></span>
+                                                            {{-- {{ __('Supprimer') }} --}}
                                                         </button>
                                                     </td>
                                                 </tr>
-                                                @include('avocat.demandes.delete-dossier')
+                                                @include('admin.demandes.delete-dossier')
                                             @endforeach
                                         </tbody>
                                     </table> <!-- end table -->
                                 </div>
-                                <div class="col-12 text-end">
-                                  <a href="{{ route('avocat.demandes.paiment',  $demandeServAgrement->id) }}"  class="btn btn-primary px-5">{{ __('Envoyer') }}</a>
-                                </div>
+
                             </form><!-- end form-->
-                        </div><!-- end card body-->
-                    </div> <!-- end card-->
-                </div> <!-- end col -->
-            </div><!-- end row-->
+                        </div> <!-- end card body-->
+                    </div> <!-- end card -->
+                </div><!-- end col-->
+            </div>
 
         </div> <!-- container -->
 
     </div>
 @endsection
-
 
 
 @section('customcss')
@@ -100,8 +99,47 @@
     </style>
 @endsection
 
+
 @section('custom_script')
     <script>
+        // ** Start deleted dossier
+        $(document).ready(function() {
+            let deleteId;
 
+            $('.delete-dossier').on('click', function() {
+                deleteId = $(this).data('id');
+                var modal = new bootstrap.Modal(document.getElementById('modalDeleteDossier'));
+                modal.show();
+                // $('#modalDeleteDossier').modal('show');
+            });
+
+            $('#confirmDeleteDossier').on('click', function() {
+
+                $.ajax({
+                    url: '{{ route('admin.demandes.destroy.dossier', ':deleteId') }}'.replace(':deleteId', deleteId),
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.status) {
+                            // $('#modalDeleteDossier').modal('hide');
+                            $('#row-delete-' + deleteId).remove();
+                            var modal = new bootstrap.Modal(document.getElementById('modalDeleteDossier'));
+                            modal.hide();
+                            location.reload();
+                        } else {
+                            console.log('Error');
+                        }
+
+                    },
+                    error: function(response) {
+                        console.log('Error:', response);
+                    }
+                });
+            });
+        });
+        // ** end deleted dossier
     </script>
 @endsection

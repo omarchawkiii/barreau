@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Demandes;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ModifierDossierRequest extends FormRequest
 {
@@ -22,9 +24,19 @@ class ModifierDossierRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'demande_serv_agrement_id' => 'required|exists:demande_serv_agrements,id',
-            'titre_ficher'             => 'required|string|max:255',
-            'ficher'                   => 'required|required|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:5120',
+            'titre_ficher'  => 'required|string|max:255',
+            'ficher'        => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:5120',
         ];
     }
+
+    // public function failedValidation(Validator $validator)
+    // {
+    //     throw new HttpResponseException(
+    //         response()->json([
+    //             'status' => false,
+    //             'errors' => $validator->errors()
+    //         ], 400)
+    //     );
+    // }
+
 }

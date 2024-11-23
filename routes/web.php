@@ -1,22 +1,24 @@
 <?php
 
-use App\Models\News;
-use App\Models\User;
-use App\Livewire\CatNewsManager;
-use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Route;
-use Spatie\Permission\Models\Permission;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\LawyerController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ScrutinController;
 use App\Http\Controllers\Cat_newsController;
 use App\Http\Controllers\Cat_eventsController;
-use App\Http\Controllers\Front\HomeController;
-use App\Http\Controllers\Front\NewsController as FrontNewsController;
-/*saloua begin*/
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\LawyerController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProfileController;
+use App\Livewire\CatNewsManager;
+use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Models\User;
+/*saloua begin*/
+use App\Http\Controllers\ScrutinController;
+use App\Http\Controllers\Admin\Demande\DemandeController as DemandeDemandeController;
 use App\Http\Controllers\Avocat\Demande\DemandeController;
+use App\Http\Controllers\Avocat\Formation\FormationController;
+use App\Http\Controllers\Avocat\Plainte\PlainteController;
+use App\Http\Controllers\Avocat\Recours\RecoursController;
+use App\Http\Controllers\Avocat\Stagiaire\StagiaireController;
 /*saloua end*/
 /*
 |--------------------------------------------------------------------------
@@ -105,20 +107,61 @@ Route::get('/avocat/home', function () {
 Route::resource('scrutins', ScrutinController::class)->except([
     'voter','resultats','representants','add']);
 /*saloua end*/
-// ** ############### Router for Avocat Dev Mohamed #######################################################################################################################
- 
+
+// ** ############### Start Router part Admin for Avocat Dev Mohamed ####################################################################################################
+Route::prefix('admin')->name('admin.')->group( function () {
+    // start route for demandes
+    Route::resource('/demandes', DemandeDemandeController::class);
+    Route::post('/demandes/{demande}/status', [DemandeDemandeController::class, 'statusDemande'])->name('demandes.status');
+
+    Route::post('/demandes/{demande}/edit-dossier', [DemandeDemandeController::class, 'editDossier'])->name('demandes.edit.dossier');
+    Route::post('/demandes/{demande}/update-dossier', [DemandeDemandeController::class, 'updateDosseir'])->name('demandes.update.dossier');
+    Route::delete('/demandes/{demande}/delete-dossier', [DemandeDemandeController::class, 'destroyDossier'])->name('demandes.destroy.dossier');
+    // end router for demandes
+
+
+
+});
+// ** ############### End Router part Admin for Avocat Dev Mohamed ####################################################################################################
+// ** ############### Start Router for Avocat Dev Mohamed ###############################################################################################################
+Route::prefix('avocat')->name('avocat.')->group( function () {
+
+    Route::get('/home', function(){
+        return view('avocat.home');
+    })->name('home');
+
     // Router avocat for demandes Dev Mohamed
     Route::controller(DemandeController::class)->group(function (){
-        Route::get('avocat/demandes', 'index')->name('demandes');
-        Route::get('avocat/demandes/ajouter', 'create')->name('demandes.ajouter');
-        Route::post('avocat/demandes/store', 'store')->name('demandes.store');
-        Route::get('avocat/demandes/{demande}/voir', 'show')->name('demandes.voir');
-        Route::get('avocat/demandes/{demande}/modifier', 'edit')->name('demandes.modifier');
-        Route::patch('avocat/demandes/{demande}/update','update')->name('demandes.update');
-        Route::delete('avocat/demandes/{demande}/supprime','destroy')->name('demandes.supprime');
+        // Router for demande
+        Route::get('/demandes', 'index')->name('demandes.index');
+        Route::get('/demandes/create', 'create')->name('demandes.create');
+        Route::post('/demandes/store', 'store')->name('demandes.store');
+        Route::get('/demandes/{demande}/show', 'show')->name('demandes.show');
+        Route::get('/demandes/{demande}/edit', 'edit')->name('demandes.edit');
+        Route::post('/demandes/{demande}/update','update')->name('demandes.update');
+        Route::delete('/demandes/{demande}/destroy','destroy')->name('demandes.destroy');
+        Route::get('/demandes/{demande}/payment','createPaiment')->name('demandes.paiment');
 
-        Route::delete('avocat/dossier/{dossier}/supprime','destroyDossier')->name('dossier.supprime');
-        Route::get('avocat/dossier/{dossier}/modifier','editDossier')->name('dossier.modifier');
-        Route::patch('avocat/dossier/{dossier}/update','updateDossier')->name('dossier.update');
-
+        // Router for dossier
+        Route::post('/demandes/dossier/{dossier}/edit-dossier','editDossier')->name('demande.edit.dossier');
+        Route::post('/demandes/dossier/{dossier}/update-dossier','updateDossier')->name('demande.update.dossier');
+        Route::delete('/demandes/dossier/{dossier}/delete-dossier','destroyDossier')->name('demande.destroy.dossier');
     });
+
+    // Route avocat for stagiaires Dev Mohamed
+    Route::get('/stagiaire', [StagiaireController::class, 'index'])->name('stagiaire');
+    Route::get('/stagiaire/ajouter', [StagiaireController::class, 'create'])->name('stagiaire.ajouter');
+
+    // Route avocat for plaintes Dev Mohamed
+    Route::get('/plainte', [PlainteController::class , 'index'])->name('plainte');
+    Route::get('/plainte/deposer', [PlainteController::class , 'create'])->name('plainte.deposer');
+
+    // Route avocat for Recours Dev Mohamed
+    Route::get('/recours', [RecoursController::class, 'index'])->name('recours');
+    Route::get('/recours/ajouter', [RecoursController::class, 'create'])->name('recours.ajouter');
+
+    // Route avocat for Formations Dev Mohamed
+    Route::get('/formation',[FormationController::class, 'index'])->name('formation');
+    Route::get('/formation/inscrire',[FormationController::class, 'create'])->name('formation.inscrire');
+});
+// ** ############### End Router for Avocat Dev Mohamed #################################################################################################################

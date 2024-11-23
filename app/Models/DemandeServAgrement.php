@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DemandeServAgrement extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, SoftCascadeTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -36,5 +36,10 @@ class DemandeServAgrement extends Model
     public function dossier()
     {
         return $this->hasMany(Dossier::class, 'demande_serv_agrement_id','id');
+    }
+
+    public function stagiaire()
+    {
+        return $this->belongsTo(Stagiaire::class,'stagiaire_id','id');
     }
 }

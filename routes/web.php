@@ -1,24 +1,26 @@
 <?php
 
-use App\Http\Controllers\Cat_newsController;
-use App\Http\Controllers\Cat_eventsController;
+use App\Models\User;
+use App\Livewire\CatNewsManager;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\front\NewsController as FrontNewsController;
+use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LawyerController;
-use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
-use App\Livewire\CatNewsManager;
-use Illuminate\Support\Facades\Route;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use App\Models\User;
-/*saloua begin*/
 use App\Http\Controllers\ScrutinController;
-use App\Http\Controllers\Admin\Demande\DemandeController as DemandeDemandeController;
+use App\Http\Controllers\Cat_newsController;
+/*saloua begin*/
+use App\Http\Controllers\Cat_eventsController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Avocat\Demande\DemandeController;
-use App\Http\Controllers\Avocat\Formation\FormationController;
 use App\Http\Controllers\Avocat\Plainte\PlainteController;
 use App\Http\Controllers\Avocat\Recours\RecoursController;
+use App\Http\Controllers\Avocat\Formation\FormationController;
 use App\Http\Controllers\Avocat\Stagiaire\StagiaireController;
+use App\Http\Controllers\Admin\Demande\DemandeController as DemandeDemandeController;
 /*saloua end*/
 /*
 |--------------------------------------------------------------------------

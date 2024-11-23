@@ -5,7 +5,8 @@ use App\Livewire\CatNewsManager;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\front\NewsController as FrontNewsController;
+use App\Http\Controllers\front\FrontNewsController;
+use App\Http\Controllers\front\FrontEventController;
 use Spatie\Permission\Models\Permission;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LawyerController;
@@ -35,21 +36,10 @@ use App\Http\Controllers\Admin\Demande\DemandeController as DemandeDemandeContro
 
 Route::get('/',  [HomeController::class, 'index'])->name('front.home');
 Route::get('/news',  [FrontNewsController::class, 'index'])->name('front.news');
-    /*$role = Role::create(['name' => 'SuperAdmin']);
-    $role_admin = Role::create(['name' => 'Admin']);
-    $role_lawyer = Role::create(['name' => 'Lawyer']);
+Route::get('/news/category/{category_id}',  [FrontNewsController::class, 'indexByCategory'])->name('front.news.byCategory');
+Route::get('/events',  [FrontEventController::class, 'index'])->name('front.event');
+Route::get('/events/category/{category_id}',  [FrontEventController::class, 'indexByCategory'])->name('front.event.byCategory');
 
-    $permission1 = Permission::create(['name' => 'Manage News']);
-    $permission2 = Permission::create(['name' => 'Manage CatNews']);
-    $permission3 = Permission::create(['name' => 'Manage Events']);
-    $permission4 = Permission::create(['name' => 'Manage CatEvents']);
-
-    $role->givePermissionTo($permission1);
-    $role->givePermissionTo($permission2);
-    $role->givePermissionTo($permission3);
-    $role->givePermissionTo($permission4);
-    $super_admin = User::find(6) ;
-    $super_admin->assignRole('SuperAdmin');*/
 
 
 

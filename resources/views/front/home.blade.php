@@ -146,21 +146,20 @@
                                 <div class="col-md-8 d-flex align-items-start flex-column">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$event?->title}}</h5>
-                                        <a href="#" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
+                                        <a href="" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         @endforeach
-                        @endif
-
                         
-                
+
                         <div class=" text-center">
-                            <a href="about-us.html" class="default-btn btn  btn-light-barreau ">
+                            <a href="{{ route('front.event.byCategory',['category_id'=>$event_category_annonces->id])}}" class="default-btn btn  btn-light-barreau ">
                                 <span>Plus de nouvelle </span>
                             </a>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-4 ">
@@ -187,13 +186,15 @@
                             </div>
                         </div>
                         @endforeach
-                        @endif
+                        
                         
                         <div class=" text-center">
-                            <a href="about-us.html" class="default-btn btn  btn-light-barreau ">
+                            <a href="{{ route('front.event.byCategory',['category_id'=>$event_category_deliberation->id])}}" class="default-btn btn  btn-light-barreau ">
                                 <span>Plus de nouvelle </span>
                             </a>
                         </div>
+
+                        @endif
                     </div>
 
                 </div>
@@ -222,12 +223,12 @@
                             </div>
                         </div>
                         @endforeach
-                        @endif
                         <div class=" text-center">
-                            <a href="about-us.html" class="default-btn btn  btn-light-barreau ">
+                            <a href="{{ route('front.event.byCategory',['category_id'=>$event_category_memoires->id])}}" class="default-btn btn  btn-light-barreau ">
                                 <span>Plus de nouvelle </span>
                             </a>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -248,8 +249,8 @@
                     <div class="section-title mb-4">
                         <h4>{{$news_category_photos?->title}}</h2>
                     </div>
+                    @if ($news_category_photos)
                     <div class="row">
-                        @if ($news_category_photos)
                         @foreach ($news_category_photos?->news as $news)
                         <div class="single-blog-post col-md-5">
                             <div class="post-image">
@@ -264,22 +265,22 @@
                             </div>
                         </div>
                         @endforeach
-                        @endif
                         
                     </div>
                     <div class=" text-center">
-                        <a href="about-us.html" class="default-btn btn  ">
+                        <a href="{{ route('front.news.byCategory',['category_id'=>$news_category_photos->id])}}" class="default-btn btn  ">
                             <span>Voir plus </span>
                         </a>
                     </div>
+                    @endif
                 </div>
 
                 <div class="col-md-6">
                     <div class="section-title mb-4">
                         <h4>{{$news_category_videos?->title}}</h2>
                     </div>
+                    @if ($news_category_videos)
                     <div class="row">
-                        @if ($news_category_videos)
                         @foreach ($news_category_videos?->news as $news)
                         <div class="single-blog-post col-md-5">
                             <div class="post-image">
@@ -294,13 +295,13 @@
                             </div>
                         </div>
                         @endforeach
-                        @endif
                     </div>
                     <div class=" text-center">
-                        <a href="about-us.html" class="default-btn btn  ">
+                        <a href="{{ route('front.news.byCategory',['category_id'=>$news_category_videos->id])}}" class="default-btn btn  ">
                             <span>Voir plus </span>
                         </a>
                     </div>
+                    @endif
                 </div>
             </div>
 

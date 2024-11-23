@@ -21,7 +21,7 @@
                         <ul class="flag-area">
                             <li class="flag-item-top">
                                 <a href="javascript:;" class="flag-bar">
-                                    <img src="assets/img/flag/globe.png" alt="Image">
+                                    <img src="/assets/img/flag/globe.png" alt="Image">
                                     <span>FR</span>
                                 </a>
 
@@ -54,7 +54,7 @@
                 <div class="mobile-menu">
                     <div class="logo">
                         <a href="{{route('front.home')}}">
-                            <img src="assets/img/logo.png" alt="logo">
+                            <img src="/assets/img/logo.png" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="{{route('front.home')}}">
-                        <img src="assets/img/logo.png" alt="logo">
+                        <img src="/assets/img/logo.png" alt="logo">
                     </a>
 
                     <div class="collapse navbar-collapse mean-menu">

@@ -3,14 +3,22 @@
     <div class="page-title-area bg-21">
         <div class="container">
             <div class="page-title-content">
-                <h2>{{ $category?->title ?? 'Actualités' }}</h2>
+                @if (isset($category))
+                <h2 class="active">{{ $category?->title}}</h2>
+                @else
+                <h2 class="active">Evénement</h2>
+                @endif
                 <ul>
                     <li>
                         <a href="/">
                             Accueil
                         </a>
                     </li>
-                    <li class="active">{{ $category?->title ?? 'Actualités' }}</li>
+                    @if (isset($category))
+                    <li class="active">{{ $category?->title}}</li>
+                    @else
+                    <li class="active">Evénement</li>
+                    @endif
                 </ul>
             </div>
         </div>

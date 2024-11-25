@@ -33,7 +33,7 @@
 
     <!-- Modal Formulaire -->
     <div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true" wire:ignore.self>
-        <div class="modal-dialog">
+        <div class="modal-dialog  modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">{{ $isEditing ? 'modifier l\'actualité' : 'ajouter une actualité' }}</h5>
@@ -90,7 +90,7 @@
 
      {{-- modal view --}}
      <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true" wire:ignore.self>
-        <div class="modal-dialog">
+        <div class="modal-dialog  modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Détails de l\'événement</h5>

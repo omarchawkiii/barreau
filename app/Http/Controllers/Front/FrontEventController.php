@@ -21,6 +21,11 @@ class FrontEventController extends Controller
         $event = Event::where('cat_event_id', $category_id)->paginate(9);
         return view('front.event', compact('event','category'));
     }
+
+    public function show(Event $event)
+    {
+        return view('front.event_details', compact('event'));
+    }
     
 
 }

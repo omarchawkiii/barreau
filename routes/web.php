@@ -36,8 +36,10 @@ use App\Http\Controllers\Admin\Demande\DemandeController as DemandeDemandeContro
 
 Route::get('/',  [HomeController::class, 'index'])->name('front.home');
 Route::get('/news',  [FrontNewsController::class, 'index'])->name('front.news');
+Route::get('/news/show/{news}',  [FrontNewsController::class, 'show'])->name('front.news.show');
 Route::get('/news/category/{category_id}',  [FrontNewsController::class, 'indexByCategory'])->name('front.news.byCategory');
 Route::get('/events',  [FrontEventController::class, 'index'])->name('front.event');
+Route::get('/events/show/{event}',  [FrontNewsController::class, 'show'])->name('front.event.show');
 Route::get('/events/category/{category_id}',  [FrontEventController::class, 'indexByCategory'])->name('front.event.byCategory');
 
 

@@ -12,7 +12,7 @@
                                 <h1 class="wow animate__animated animate__fadeInDown" data-wow-delay="1s">ORDRE DES AVOCATS D’ALGER</h1>
                                 <h2 class="wow animate__animated animate__fadeInDown text-center" data-wow-delay="1s">Savoir - Courage - Indépendance</h3>
                                 <div class="banner-btn wow animate__animated animate__fadeInUp text-center" data-wow-delay="1s">
-                                    <a href="pricing-style-one.html" class="default-btn">
+                                    <a href="" class="default-btn">
                                         <span>En savoir plus </span>
                                     </a>
 
@@ -146,7 +146,7 @@
                                 <div class="col-md-8 d-flex align-items-start flex-column">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$event?->title}}</h5>
-                                        <a href="" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
+                                        <a href="{{route('front.event.show', ['event'=>$event])}}" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +180,7 @@
                                 <div class="col-md-8 d-flex align-items-start flex-column">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$event?->title}}</h5>
-                                        <a href="#" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
+                                        <a href="{{route('front.event.show', ['event'=>$event])}}" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
                                     </div>
                                 </div>
                             </div>
@@ -217,7 +217,7 @@
                                 <div class="col-md-8 d-flex align-items-start flex-column">
                                     <div class="card-body">
                                         <h5 class="card-title">{{$event?->title}}</h5>
-                                        <a href="#" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
+                                        <a href="{{route('front.event.show', ['event'=>$event])}}" class="btn btn-link read-more"><i class=" bx bx-plus bx-border-circle bx-sm bx-border-circle-barreau"  > </i></a>
                                     </div>
                                 </div>
                             </div>
@@ -254,13 +254,13 @@
                         @foreach ($news_category_photos?->news as $news)
                         <div class="single-blog-post col-md-5">
                             <div class="post-image">
-                                <a href="blog-details.html">
+                                <a href="{{route('front.news.show', ['news'=>$news])}}">
                                     <img src="{{$news?->thumbnail_url}}" alt="image">
                                 </a>
                             </div>
                             <div class="blog-content">
                                 <h5>
-                                    <a href="blog-details.html">{{$news?->title}}</a>
+                                    <a href="{{route('front.news.show', ['news'=>$news])}}">{{$news?->title}}</a>
                                 </h5>
                             </div>
                         </div>
@@ -284,13 +284,13 @@
                         @foreach ($news_category_videos?->news as $news)
                         <div class="single-blog-post col-md-5">
                             <div class="post-image">
-                                <a href="blog-details.html">
+                                <a href="{{route('front.news.show', ['news'=>$news])}}">
                                     <img src="{{$news?->thumbnail_url}}" alt="image">
                                 </a>
                             </div>
                             <div class="blog-content">
                                 <h5>
-                                    <a href="blog-details.html">{{$news?->title}}</a>
+                                    <a href="{{route('front.news.show', ['news'=>$news])}}">{{$news?->title}}</a>
                                 </h5>
                             </div>
                         </div>
@@ -324,7 +324,7 @@
                         <input type="email" class="form-control px-4 border-0 w-100 text-md-left" id="email" placeholder="Entrer votre adresse E-mail" name="email">
                         </div>
                         <div class="col-lg-4 my-md-2 my-2">
-                            <a href="contact-us.html" class="default-btn btn">
+                            <a href="#" class="default-btn btn">
                                 <span>S'inscrire</span>
                             </a>
                         </div>

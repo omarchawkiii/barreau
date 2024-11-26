@@ -22,5 +22,9 @@ class FrontNewsController extends Controller
         return view('front.news', compact('news','category'));
     }
     
+    public function show(News $news)
+    {
+        return view('front.news_details', compact('news'));
+    }
 
 }

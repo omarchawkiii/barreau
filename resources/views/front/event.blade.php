@@ -31,7 +31,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="single-blog-post">
                         <div class="post-image">
-                            <a href="blog-details.html">
+                            <a href="{{route('front.event.show', ['event'=>$itrm])}}">
                                 <img src="{{ $item->thumbnail_url }}" alt="image">
                             </a>
                         </div>
@@ -43,12 +43,12 @@
                             </div>
 
                             <h3>
-                                <a href="blog-details.html">{{ $item->title}}</a>
+                                <a href="{{route('front.event.show', ['event'=>$itrm])}}">{{ $item->title}}</a>
                             </h3>
 
                             <p>{!! Str::of( $item->content)->limit(120); !!}</p>
 
-                            <a href="blog-details.html" class="default-btn">
+                            <a href="{{route('front.event.show', ['event'=>$itrm])}}" class="default-btn">
                                 <span>En savoir plus</span>
                             </a>
                         </div>

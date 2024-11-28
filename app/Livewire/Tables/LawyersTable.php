@@ -107,8 +107,7 @@ class LawyersTable extends DataTableComponent
                 ->hideIf(Auth::guest()),
             Column::make('willaya', 'willaya')
                 ->sortable()
-                ->deselected()
-                ->hideIf(Auth::guest()),
+                ->deselected(),
             Column::make('adresse_fr', 'adresse_fr')
                 ->sortable()
                 ->deselected()
@@ -254,7 +253,7 @@ class LawyersTable extends DataTableComponent
     {
         if(Auth::guest())
             return [
-                SelectFilter::make('Wilaya')
+                SelectFilter::make('Willaya')
                 ->options(
                     array_merge(
                         ["all" => "Toutes"],

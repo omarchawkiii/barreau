@@ -159,8 +159,9 @@
 		<script src="{{asset('/assets/js/ajaxchimp.min.js')}}"></script>
         <!-- Custom  JS -->
 
-		<script src="{{asset('/public/vendor/livewire/livewire.js?id=38dc8241')}}" data-csrf="68IZGJ7zTIhNdimnknHm8QRrxurX1B0L6YdZegDs" data-update-uri="/livewire/update" data-navigate-once="true"></script>
+		<script src="{{asset('/public/vendor/livewire/livewire.js?id=38dc8241')}}" ></script>
 		@livewireScripts
+		
         @yield('custom_script')
 		<script src="{{asset('/assets/js/custom.js')}}"></script>
 

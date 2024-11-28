@@ -83,8 +83,8 @@
 
         <script src="{{asset('/assets/admin/assets/libs/datatables.net/js/jquery.dataTables.min.js')}}"></script>
         <script src="{{asset('/assets/admin/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
-        {{-- <script src="{{asset('/public/vendor/livewire/livewire.js?id=38dc8241')}}"></script> --}}
         
+        <script src="{{asset('/public/vendor/livewire/livewire.js?id=38dc8241')}}" data-csrf="68IZGJ7zTIhNdimnknHm8QRrxurX1B0L6YdZegDs" data-update-uri="/livewire/update" data-navigate-once="true"></script>
         @livewireScripts
         @yield('custom_script')
     </body>

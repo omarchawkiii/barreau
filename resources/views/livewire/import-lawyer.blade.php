@@ -47,19 +47,10 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{ $isEditing ? 'Modifier l\'événement' : 'Ajouter un événement' }}</h5>
+                    <h5 class="modal-title">{{ $isEditing ? 'Modifier l\'avocat' : 'Ajouter un avocat' }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" wire:click="resetForm"></button>
                 </div>
                 <form wire:submit.prevent="{{ $isEditing ? 'update' : 'add' }}">
-                    {{-- @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif --}}
                     <div class="modal-body row">
                         <div class="form-group col-3 mt-3">
                             <label for="code">Code</label>
@@ -144,14 +135,14 @@
 
                         {{--  --}}
                         <div class="form-group col-3 mt-3">
-                            <label for="grade">Lieu de serment</label>
+                            <label for="grade">grade</label>
                             <input type="text" id="grade" class="form-control" wire:model="grade">
                             @error('grade')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group col-3 mt-3">
-                            <label for="tribunal">Lieu de serment</label>
+                            <label for="tribunal">tribunal</label>
                             <input type="text" id="tribunal" class="form-control" wire:model="tribunal">
                             @error('tribunal')
                                 <span class="text-danger">{{ $message }}</span>
@@ -406,6 +397,208 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal view -->
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ "Détails de l\'avocat" }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body row">
+                <div class="form-group col-3 mt-3">
+                    <label for="code">Code : </label>
+                    <span>{{ $lawyer?->code }}</span>
+                </div>
+
+                <div class="form-group col-3 mt-3">
+                    <label for="email">Email : </label>
+                    <span>{{ $lawyer?->email }}</span>
+                </div>
+                <div class="form-group col-3 mt-3"></div>
+                <div class="form-group col-3 mt-3"></div>
+
+                {{-- naming --}}
+                <div class="form-group col-3 mt-3">
+                    <label for="nom_arb">Nom (Arabe) : </label>
+                    <span>{{ $lawyer?->nom_arb }}</span>                    
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="prenom_arb">Prénom (Arabe) : </label>
+                    <span>{{ $lawyer?->prenom_arb }}</span>                    
+                </div>
+
+                <div class="form-group col-3 mt-3">
+                    <label for="nom_fr">Nom (Français) : </label>
+                    <span>{{ $lawyer?->nom_fr }}</span>                    
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="prenom_fr">Prénom (Français) : </label>
+                    <span>{{ $lawyer?->prenom_fr }}</span>
+                </div>
+
+                <div class="form-group col-3 mt-3">
+                    <label for="date_naiss">Date de Naissance : </label>
+                    <span>{{ $lawyer?->date_naiss?->format('Y-m-d') }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="etat">Etat : </label>
+                    <span>{{ $lawyer?->etat }}</span>
+                </div>
+
+
+                {{-- serment --}}
+                <div class="form-group col-3 mt-3">
+                    <label for="date_serment">Date de serment : </label>
+                    <span>{{ $lawyer?->date_serment?->format('Y-m-d') }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="lieu_serm">Lieu de serment : </label>
+                    <span>{{ $lawyer?->lieu_serm }}</span>
+                </div>
+
+                {{--  --}}
+                <div class="form-group col-3 mt-3">
+                    <label for="grade">grade : </label>
+                    <span>{{ $lawyer?->grade }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="tribunal">tribunal : </label>
+                    <span>{{ $lawyer?->tribunal }}</span>
+                </div>
+
+
+                {{--  --}}
+
+                <div class="form-group col-3 mt-3">
+                    <label for="adresse_prof_arb">Adresse Professionnelle Arb : </label>
+                    <span>{{ $lawyer?->adresse_prof_arb }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="willaya">Willaya : </label>
+                    <span>{{ $lawyer?->willaya }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="commune">Commune : </label>
+                    <span>{{ $lawyer?->commune }}</span>
+                </div>
+                
+                <div class="form-group col-3 mt-3">
+                    <label for="adresse_fr">Adresse Française : </label>
+                    <span>{{ $lawyer?->adresse_fr }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="fin_contrat_local">Fin Contrat Local : </label>
+                    <span>{{ $lawyer?->fin_contrat_local?->format("Y-m-d") }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="date_expir_carte">Date Expiration Carte : </label>
+                    <span>{{ $lawyer?->date_expir_carte?->format("Y-m-d") }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="local">Local</label>
+                    <span>{{ $lawyer?->local }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="adresse_domic">Adresse Domicile</label>
+                    <span>{{ $lawyer?->adresse_domic }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="majles">Majles : </label>
+                    <span>{{ $lawyer?->majles }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="fonction">Fonction : </label>
+                    <span>{{ $lawyer?->fonction }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="sexe">Sexe : </label>
+                    <span>{{ $lawyer?->sexe }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="depot">Dépot : </label>
+                    <span>{{ $lawyer?->depot }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="mutation">Mutation : </label>
+                    <span>{{ $lawyer?->mutation }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="date_capa">Date Capa : </label>
+                    <span>{{ $lawyer?->date_capa?->format("Y-m-d") }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="ex_proff">Ex Profession : </label>
+                    <span>{{ $lawyer?->ex_proff }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="scotab">Scotab : </label>
+                    <span>{{ $lawyer?->Scotab }}</span>
+                </div>
+
+                <div class="form-group col-3 mt-3">
+                    <label for="sit_prof">Situation Professionnelle : </label>
+                    <span>{{ $lawyer?->sit_prof }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="date_reglement">Date de Règlement : </label>
+                    <span>{{ $lawyer?->date_reglement?->format("Y-m-d") }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="datcosup">Datcosup : </label>
+                    <span>{{ $lawyer?->datcosup?->format("Y-m-d") }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="lieu_nais_arb">Lieu Naissance (Arabe) : </label>
+                    <span>{{ $lawyer?->lieu_nais_arb }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="lieu_nais_fr">Lieu Naissance (Français)</label>
+                    <span>{{ $lawyer?->lieu_nais_fr }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="willaya_nais_fr">Willaya Naissance (Français)</label>
+                    <span>{{ $lawyer?->willaya_nais_fr }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="fin_carte_prof">Fin Carte Professionnelle</label>
+                    <span>{{ $lawyer?->fin_carte_prof?->format("Y-m-d") }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="tel">Téléphone</label>
+                    <span>{{ $lawyer?->tel }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="fax">Fax</label>
+                    <span>{{ $lawyer?->fax }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="mob">Mobile</label>
+                    <span>{{ $lawyer?->mob }}</span>
+                </div>
+
+                <div class="form-group col-3 mt-3">
+                    <label for="num_act_nais">Numéro Acte de Naissance</label>
+                    <span>{{ $lawyer?->num_act_nais }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="nom_pere">Nom du Père</label>
+                    <span>{{ $lawyer?->nom_pere }}</span>
+                </div>
+                <div class="form-group col-3 mt-3">
+                    <label for="nom_mere">Nom de la Mère</label>
+                    <span>{{ $lawyer?->nom_mere }}</span>
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 </div>
 <script>
     function confirmDeletion(id) {
@@ -431,11 +624,16 @@
         $('#newModal').modal('show');
         @this.call('edit', id);
     }
+    function view(id) {
+        $('#viewModal').modal('show');
+        @this.call('view', id);
+    }
 </script>
 <script>
     window.addEventListener('close-modal', event => {
         @this.call('resetForm');
         $('#newModal').modal('hide');
+        $('#viewModal').modal('hide');
         $('#uplad_lawyer').modal('hide');
     });
 </script>

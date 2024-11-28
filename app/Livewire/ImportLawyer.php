@@ -22,6 +22,7 @@ class ImportLawyer extends Component
     use WithFileUploads;
 
 
+    public $lawyer ;
     public $lawyer_id ;
     public $code ;
     public $nom_arb ;
@@ -128,6 +129,13 @@ class ImportLawyer extends Component
 
     }
 
+    public function view($id)
+    {
+        $lawyer = Lawyer::findOrFail($id);
+        $this->lawyer = $lawyer;
+    }
+
+
     public function add()
     {
         $validated_data = $this->validate((new LawyerStoreRequest())->rules());
@@ -175,11 +183,11 @@ class ImportLawyer extends Component
         $this->code  = $lawyer->code  ;
         $this->nom_arb  = $lawyer->nom_arb  ;
         $this->prenom_arb  = $lawyer->prenom_arb  ;
-        $this->date_naiss  = $lawyer->date_naiss  ;
+        $this->date_naiss  = $lawyer->date_naiss?->format("Y-m-d")  ;
         $this->nom_fr  = $lawyer->nom_fr  ;
         $this->prenom_fr  = $lawyer->prenom_fr  ;
         $this->etat  = $lawyer->etat  ;
-        $this->date_serment  = $lawyer->date_serment  ;
+        $this->date_serment  = $lawyer->date_serment?->format("Y-m-d")  ;
         $this->lieu_serm  = $lawyer->lieu_serm  ;
         $this->grade  = $lawyer->grade  ;
         $this->tribunal  = $lawyer->tribunal  ;
@@ -187,8 +195,8 @@ class ImportLawyer extends Component
         $this->commune  = $lawyer->commune  ;
         $this->willaya  = $lawyer->willaya  ;
         $this->adresse_fr  = $lawyer->adresse_fr  ;
-        $this->fin_contrat_local  = $lawyer->fin_contrat_local  ;
-        $this->date_expir_carte  = $lawyer->date_expir_carte  ;
+        $this->fin_contrat_local  = $lawyer->fin_contrat_local?->format("Y-m-d")  ;
+        $this->date_expir_carte  = $lawyer->date_expir_carte?->format("Y-m-d")  ;
         $this->local  = $lawyer->local  ;
         $this->adresse_domic  = $lawyer->adresse_domic  ;
         $this->majles  = $lawyer->majles  ;
@@ -196,12 +204,12 @@ class ImportLawyer extends Component
         $this->sexe  = $lawyer->sexe  ;
         $this->depot  = $lawyer->depot  ;
         $this->mutation  = $lawyer->mutation  ;
-        $this->date_capa  = $lawyer->date_capa  ;
+        $this->date_capa  = $lawyer->date_capa?->format("Y-m-d")  ;
         $this->ex_proff  = $lawyer->ex_proff  ;
         $this->scotab  = $lawyer->scotab  ;
         $this->sit_prof  = $lawyer->sit_prof  ;
-        $this->date_reglement  = $lawyer->date_reglement  ;
-        $this->datcosup  = $lawyer->datcosup  ;
+        $this->date_reglement  = $lawyer->date_reglement?->format("Y-m-d")  ;
+        $this->datcosup  = $lawyer->datcosup?->format("Y-m-d")  ;
         $this->lieu_nais_arb  = $lawyer->lieu_nais_arb  ;
         $this->lieu_nais_fr  = $lawyer->lieu_nais_fr  ;
         $this->willaya_nais_fr  = $lawyer->willaya_nais_fr  ;

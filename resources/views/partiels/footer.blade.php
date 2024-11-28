@@ -9,25 +9,25 @@
 
                     <ul class="import-link">
                         <li>
-                            <a href="services-style-one.html">Le cadre juridique de la profession </a>
+                            <a href="#">Le cadre juridique de la profession </a>
                         </li>
                         <li>
-                            <a href="services-style-one.html">Le bâtonnier   </a>
+                            <a href="#">Le bâtonnier   </a>
                         </li>
                         <li>
-                            <a href="services-style-one.html"> Présentation de l'ordre</a>
+                            <a href="#"> Présentation de l'ordre</a>
                         </li>
                         <li>
-                            <a href="services-style-one.html">Services de l'ordre</a>
+                            <a href="#">Services de l'ordre</a>
                         </li>
                         <li>
-                            <a href="services-style-one.html">Métier d'avocat</a>
+                            <a href="#">Métier d'avocat</a>
                         </li>
                         <li>
-                            <a href="services-style-one.html">Activités et Missions</a>
+                            <a href="#">Activités et Missions</a>
                         </li>
                         <li>
-                            <a href="services-style-one.html"> Photos et vidéos</a>
+                            <a href="#"> Photos et vidéos</a>
                         </li>
                     </ul>
                 </div>
@@ -39,19 +39,19 @@
 
                     <ul class="import-link">
                         <li>
-                            <a href="services-style-one.html">TABLEAU DES AVOCATS   </a>
+                            <a href="#">TABLEAU DES AVOCATS   </a>
                         </li>
                         <li>
-                            <a href="services-style-one.html">C.A.P.R.A</a>
+                            <a href="#">C.A.P.R.A</a>
                         </li>
                         <li>
-                            <a href="services-style-one.html">NOUVELLES D'AUTORITÉ</a>
+                            <a href="#">NOUVELLES D'AUTORITÉ</a>
                         </li>
                         <li>
-                            <a href="services-style-one.html">DÉCLARATIONS</a>
+                            <a href="#">DÉCLARATIONS</a>
                         </li>
                         <li>
-                            <a href="services-style-one.html">CONFÉRENCE</a>
+                            <a href="#">CONFÉRENCE</a>
                         </li>
 
                     </ul>
@@ -64,22 +64,22 @@
 
                     <ul class="import-link">
                         <li>
-                            <a href="about-us.html">Album photo </a>
+                            <a href="#">Album photo </a>
                         </li>
                         <li>
-                            <a href="team.html">Album vidéo</a>
-                        </li>
-
-                        <li>
-                            <a href="team.html">Annonces</a>
+                            <a href="#">Album vidéo</a>
                         </li>
 
                         <li>
-                            <a href="team.html">Délibération</a>
+                            <a href="#">Annonces</a>
                         </li>
 
                         <li>
-                            <a href="team.html">Mémoires et déclartion</a>
+                            <a href="#">Délibération</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Mémoires et déclartion</a>
                         </li>
 
                     </ul>

@@ -139,7 +139,7 @@
                 <div class="collapse" id="menuuser">
                     <ul class="sub-menu">
                         <li class="menu-item">
-                            <a href="{{ route('admin.lawyers') }}" class="menu-link">
+                            <a href="{{ route('admin.admins') }}" class="menu-link">
                                 <span class="menu-text">Administrateurs  </span>
                             </a>
                         </li>

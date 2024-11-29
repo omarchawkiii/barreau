@@ -22,6 +22,8 @@ use App\Http\Controllers\Avocat\Recours\RecoursController;
 use App\Http\Controllers\Avocat\Formation\FormationController;
 use App\Http\Controllers\Avocat\Stagiaire\StagiaireController;
 use App\Http\Controllers\Admin\Demande\DemandeController as DemandeDemandeController;
+use App\Http\Controllers\AdminController;
+
 /*saloua end*/
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +86,7 @@ Route::prefix('admin')->middleware(['role:SuperAdmin'])->group( function () {
     Route::get('events',[EventController::class, 'index'])->name('admin.events');
     Route::get('news',[NewsController::class, 'index'])->name('admin.news');
     Route::get('lawyers',[LawyerController::class, 'index'])->name('admin.lawyers');
+    Route::get('admins',[AdminController::class, 'index'])->name('admin.admins');
 
 });
 

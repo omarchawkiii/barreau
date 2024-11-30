@@ -59,6 +59,14 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+
+                        <div class="form-group col-3 mt-3">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" class="form-control" wire:model="password">
+                            @error('password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" wire:click="resetForm">Annuler</button>

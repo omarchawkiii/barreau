@@ -26,12 +26,14 @@ class AdminManager extends Component
     public $admin_id ;
     public $name ;
     public $email;
+    public $password;
     public $loading = false;
     public $isEditing = false;
 
     protected $rules = [
         'name' => 'required|string|max:255',
         'email' => 'required|email',
+        'password' => 'required',
     ];
 
     public function placeholder()
@@ -47,6 +49,7 @@ class AdminManager extends Component
         $this->admin_id  = null ;
         $this->name  = null ;
         $this->email  = null ;
+        $this->password  = null ;
         $this->isEditing = false;
     }
 
@@ -64,10 +67,10 @@ class AdminManager extends Component
             $user = User::create([
                 "email" => $this->email,
                 "name" => $this->name,
-                "password" => encrypt(rand(10000000,99999999)),
+                "password" => bcrypt($this->password),
             ]);
 
-           $adminRole = Role::firstOrCreate(['name' => 'Admin']);
+           $adminRole = Role::firstOrCreate(['name' => 'SuperAdmin']);
             $user->assignRole($adminRole);
 
             $this->dispatch('swal',
@@ -111,8 +114,13 @@ class AdminManager extends Component
         $validated_data = $this->validate();
 
         try {
-            $user = User::findOrFail($this->user_id);
-            $user->update($validated_data);
+            $user = User::findOrFail($this->admin_id);
+
+            $user->email = $validated_data['email'];
+            $user->name = $validated_data['name'];
+            $user->password = bcrypt($validated_data['password']);
+
+            $user->save();
 
             session()->flash('status', 'success');
             session()->flash('message', 'Mise à jour réussie');
@@ -127,6 +135,7 @@ class AdminManager extends Component
             $this->dispatch('close-modal');
             $this->dispatch('refreshDatatable');
         } catch (\Exception $e) {
+            error($e);
             session()->flash('status', 'error');
             session()->flash('message', 'Une erreur est survenue lors de la mise à jour de l\'admin.');
             $this->dispatch('swal', [

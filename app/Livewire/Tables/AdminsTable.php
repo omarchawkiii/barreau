@@ -28,7 +28,7 @@ class AdminsTable extends DataTableComponent
 
     public function builder() : Builder
     {
-        return User::role('Admin');
+        return User::role('SuperAdmin');
     }
 
     public function columns(): array

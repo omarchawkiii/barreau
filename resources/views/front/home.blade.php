@@ -55,7 +55,7 @@
                             @endforeach
                     </div>
                 @endif
-                
+
               </form>
               <p class="create-account mt-3">
                 Vous n’avez pas de compte ? <a href="#" class="text-decoration-none">Créer un</a>.
@@ -63,7 +63,7 @@
             </div>
           </div>
     </section>
-    
+
      {{-- End Login  Area --}}
 
     <!-- Start Choose Us Area -->
@@ -152,7 +152,7 @@
                             </div>
                         </div>
                         @endforeach
-                        
+
 
                         <div class=" text-center">
                             <a href="{{ route('front.event.byCategory',['category_id'=>$event_category_annonces->id])}}" class="default-btn btn  btn-light-barreau ">
@@ -186,8 +186,8 @@
                             </div>
                         </div>
                         @endforeach
-                        
-                        
+
+
                         <div class=" text-center">
                             <a href="{{ route('front.event.byCategory',['category_id'=>$event_category_deliberation->id])}}" class="default-btn btn  btn-light-barreau ">
                                 <span>Plus de nouvelle </span>
@@ -265,7 +265,7 @@
                             </div>
                         </div>
                         @endforeach
-                        
+
                     </div>
                     <div class=" text-center">
                         <a href="{{ route('front.news.byCategory',['category_id'=>$news_category_photos->id])}}" class="default-btn btn  ">
@@ -345,28 +345,34 @@
                 <p>Nous collaborons avec des partenaires stratégiques pour offrir des services juridiques de qualité supérieure.</p>
             </div>
             <div class="row">
-                <div class="partner-slider owl-carousel owl-theme">
-                    <div class="partner-item">
-                        <a href="about-us.html">
-                            <img src="assets/img/partner/partner-1.png" alt="Image">
-                        </a>
-                    </div>
-                    <div class="partner-item">
-                        <a href="about-us.html">
-                            <img src="assets/img/partner/partner-2.png" alt="Image">
-                        </a>
-                    </div>
-                    <div class="partner-item">
-                        <a href="about-us.html">
-                            <img src="assets/img/partner/partner-3.png" alt="Image">
-                        </a>
-                    </div>
-                    <div class="partner-item">
-                        <a href="about-us.html">
-                            <img src="assets/img/partner/partner-4.png" alt="Image">
-                        </a>
-                    </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+                    <div class="partner-slider owl-carousel owl-theme">
+                        <div class="partner-item">
+                            <a href="about-us.html">
+                                <img src="assets/img/partner/partner-1.png" alt="Image">
+                            </a>
+                        </div>
+                        <div class="partner-item">
+                            <a href="about-us.html">
+                                <img src="assets/img/partner/partner-2.png" alt="Image">
+                            </a>
+                        </div>
+                        <div class="partner-item">
+                            <a href="about-us.html">
+                                <img src="assets/img/partner/partner-3.png" alt="Image">
+                            </a>
+                        </div>
+                        <div class="partner-item">
+                            <a href="about-us.html">
+                                <img src="assets/img/partner/partner-4.png" alt="Image">
+                            </a>
+                        </div>
 
+                    </div>
+                </div>
+                <div class="col-md-2">
                 </div>
             </div>
         </div>

@@ -154,12 +154,12 @@
             </li>
             @endrole
                    <li class="menu-item">
-                <a href="#menuuser" data-bs-toggle="collapse" class="menu-link">
+                <a href="#scrutins" data-bs-toggle="collapse" class="menu-link">
                     <span class="menu-icon"><i class="mdi mdi-receipt"></i></span>
                     <span class="menu-text"> Scrutins & sondages   </span>
                     <span class="mdi mdi-dots-vertical"></span>
                 </a>
-                <div class="collapse" id="menuuser">
+                <div class="collapse" id="scrutins">
                     <ul class="sub-menu">
                            <li class="menu-item">
                             <a href="{{ route('scrutins.index') }}" class="menu-link">

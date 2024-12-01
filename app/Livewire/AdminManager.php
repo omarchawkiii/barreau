@@ -27,6 +27,7 @@ class AdminManager extends Component
     public $name ;
     public $email;
     public $password;
+    public $password_confirmation;
     public $loading = false;
     public $isEditing = false;
 
@@ -34,6 +35,7 @@ class AdminManager extends Component
         'name' => 'required|string|max:255',
         'email' => 'required|email',
         'password' => 'required',
+        'password_confirmation' => 'required_with:password|same:password|min:6'
     ];
 
     public function placeholder()
@@ -152,7 +154,7 @@ class AdminManager extends Component
         try {
             $user = User::findOrFail($id);
             $user->delete();
-            
+
             $this->dispatch('swal',
                 title : 'Suppression réussie',
                 text : 'L\'admin  a été supprimé avec succès !',
@@ -174,11 +176,11 @@ class AdminManager extends Component
             );
         }
     }
-   
+
     public function render()
     {
         $users = User::all();
-       
+
         return view('livewire.admin-manager', [
             'users' => $users ,
         ]);

@@ -36,7 +36,7 @@
     <!-- Modal Formulaire -->
 
     <div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true" wire:ignore.self>
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">{{ $isEditing ? 'Modifier l\'admin' : 'Ajouter un admin' }}</h5>
@@ -44,7 +44,7 @@
                 </div>
                 <form wire:submit.prevent="{{ $isEditing ? 'update' : 'add' }}">
                     <div class="modal-body row">
-                        <div class="form-group col-3 mt-3">
+                        <div class="form-group col-12 mt-3">
                             <label for="name">Nom</label>
                             <input type="text" id="name" class="form-control" wire:model="name">
                             @error('name')
@@ -52,7 +52,7 @@
                             @enderror
                         </div>
 
-                        <div class="form-group col-3 mt-3">
+                        <div class="form-group col-12 mt-3">
                             <label for="email">Email</label>
                             <input type="email" id="email" class="form-control" wire:model="email">
                             @error('email')
@@ -60,10 +60,17 @@
                             @enderror
                         </div>
 
-                        <div class="form-group col-3 mt-3">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" class="form-control" wire:model="password">
+                        <div class="form-group col-12 mt-3">
+                            <label for="password">Mot de passe </label>
+                            <input type="password" id="password" class="form-control" wire:model="password" autocomplete>
                             @error('password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group col-12 mt-3">
+                            <label for="password_confirmation">Confirmer le mot de passe </label>
+                            <input type="password" id="password_confirmation" class="form-control" wire:model="password_confirmation">
+                            @error('password_confirmation')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -97,7 +104,7 @@
                     <label for="email">Email : </label>
                     <span>{{ $admin?->email }}</span>
                 </div>
-            
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
